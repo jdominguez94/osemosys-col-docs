@@ -1,0 +1,91 @@
+site_name: Osemosys UPME — Documentación
+site_description: Guía de usuario y documentación técnica del modelo energético colombiano en OSeMOSYS
+repo_url: https://github.com/UPME-SubDemanda/Osemosys_UPME
+repo_name: UPME-SubDemanda/Osemosys_UPME
+docs_dir: docs
+
+theme:
+  name: material
+  language: es
+  icon:
+    logo: material/lightning-bolt
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search:
+      lang: es
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Instalación: getting-started/installation.md
+      - Primera simulación: getting-started/first-simulation.md
+      - Variables de entorno: getting-started/environment-variables.md
+  - Guía de Usuario:
+      - Visión general: user-guide/overview.md
+      - Escenarios y catálogos: user-guide/escenarios.md
+      - Simulaciones: user-guide/simulaciones.md
+      - Visualizaciones y reportes: user-guide/visualizaciones.md
+      - Restricciones definidas por el usuario (UDC): user-guide/udc.md
+      - Carga de datos Excel/SAND: user-guide/carga-excel-sand.md
+  - Arquitectura y Referencia:
+      - Visión general (C4): architecture/overview.md
+      - Motor de simulación OSeMOSYS: architecture/motor-osemosys.md
+      - Paridad Notebook vs App: architecture/paridad-notebook.md
+      - Comparar resultados: architecture/comparar-resultados.md
+      - Configuración de series de gráficas: architecture/series-graficas.md
+      - Frontend: architecture/frontend.md
+      - Backend: architecture/backend.md
+  - Operación:
+      - Runbook: operations/runbook.md
+      - Monitoreo: operations/monitoring.md
+      - CI/CD: operations/ci-cd.md
+      - Despliegue: operations/deployment.md
+      - Pruebas E2E: operations/e2e.md
+  - Ejemplos:
+      - Notebook UPME OPT: examples/notebook.md
+  - Contribuir: contributing.md

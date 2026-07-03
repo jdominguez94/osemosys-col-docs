@@ -1,0 +1,9 @@
+services:
+  docs:
+    build: .
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./docs:/docs/docs
+      - ./mkdocs.yml:/docs/mkdocs.yml
+    working_dir: /docs
