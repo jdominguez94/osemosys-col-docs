@@ -2,15 +2,7 @@
   max-width: 1280px;
 }
 
-/* Paleta institucional UPME (tomada del logo oficial) */
-[data-md-color-primary="custom"] {
-  --md-primary-fg-color: #01308A;
-  --md-primary-fg-color--light: #1B4FB0;
-  --md-primary-fg-color--dark: #012569;
-  --md-primary-bg-color: #FFFFFF;
-  --md-primary-bg-color--light: #FFFFFF;
-}
-
+/* Acento institucional UPME (dorado, tomado del logo oficial) */
 [data-md-color-accent="custom"] {
   --md-accent-fg-color: #E0B62C;
   --md-accent-fg-color--transparent: #e0b62c1a;
@@ -18,11 +10,18 @@
   --md-accent-bg-color--light: #000000de;
 }
 
-/* Franja de bandera de Colombia bajo el header/tabs, como en sitios de gob.co */
-.md-header {
-  box-shadow: none;
+/* Header blanco con texto oscuro, como upme.gov.co (no un header de color sólido) */
+[data-md-color-primary="white"] .md-header {
+  color: #01308A;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+[data-md-color-primary="white"] .md-tabs {
+  color: #01308A;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Franja de la bandera de Colombia bajo el menú, como en sitios institucionales de gob.co */
 .md-tabs {
   position: relative;
 }
@@ -42,10 +41,29 @@
   );
 }
 
-/* El logo trae fondo blanco sólido: darle un chip para que se lea bien en modo oscuro */
+/* Logo UPME: siempre visible, en tamaño legible, con chip blanco para que no
+   se pierda en modo oscuro (el archivo original trae fondo blanco sólido) */
+.md-header__button.md-logo {
+  margin: 0.2rem 0.4rem 0.2rem 0;
+}
+
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
-  border-radius: 4px;
+  height: 2.2rem;
+  width: auto;
+  border-radius: 6px;
   background-color: #ffffff;
-  padding: 2px;
+  padding: 3px;
+}
+
+/* Logo destacado en la portada */
+.upme-hero-logo {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  height: 120px;
+  width: auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }

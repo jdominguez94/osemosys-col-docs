@@ -1,3 +1,5 @@
+<img src="assets/upme-logo.jpg" alt="UPME" class="upme-hero-logo">
+
 # Osemosys UPME
 
 Documentación del modelo energético colombiano construido sobre OSeMOSYS.
