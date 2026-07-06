@@ -1,0 +1,46 @@
+sequenceDiagram
+    actor Analista as Analista/Planificador
+    participant Frontend as Frontend Web (localhost:8080)
+    participant API as API FastAPI
+    participant Worker as Worker Celery (Pyomo/Solver)
+    participant DB as PostgreSQL
+
+    Note over Analista,DB: Entrada de datos: Excel ClicSAND (.xlsx) o ZIP de CSVs (p. ej. generado con otoole)
+
+    alt Carga vía Excel ClicSAND (.xlsx)
+        Analista->>Frontend: Sube archivo ClicSAND (.xlsx)
+        Frontend->>API: POST /scenarios/import-excel
+    else Carga vía ZIP de CSVs (otoole)
+        Analista->>Frontend: Sube .zip con CSVs OSeMOSYS
+        Frontend->>API: POST /scenarios/import-csv
+    end
+
+    API->>DB: Crea escenario y parámetros (schema osemosys)
+    DB-->>API: Escenario creado
+    API-->>Frontend: Escenario listo para simular
+
+    Analista->>Frontend: Clic en "Simular"
+    Frontend->>API: POST /simulations
+    API->>DB: Crea simulation_job (QUEUED)
+    API->>Worker: Encola tarea (Redis/Celery)
+    API-->>Frontend: job_id (202 Accepted)
+
+    loop Monitoreo de estado
+        Frontend->>API: GET /simulations/{job_id}
+        API-->>Frontend: status = RUNNING...
+    end
+
+    Worker->>Worker: Pipeline: extraer datos, construir modelo Pyomo, resolver (HiGHS, Gurobi, CPLEX o Mosek)
+    Worker->>DB: Persiste resultados (osemosys_output_param_value) y evento final
+    Worker->>DB: simulation_job.status = SUCCEEDED
+
+    Frontend->>API: GET /simulations/{job_id}/result
+    API-->>Frontend: KPIs y series de la planeación de largo plazo
+
+    opt Descarga de resultados
+        Analista->>Frontend: Clic en "Descargar CSV"
+        Frontend->>API: GET /simulations/{job_id}/output-values/export
+        API-->>Analista: archivo .csv con la planeación de largo plazo
+    end
+
+    Note over DB: Los resultados quedan almacenados en PostgreSQL, disponibles para futuras consultas y comparaciones
