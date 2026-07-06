@@ -1,0 +1,22 @@
+C4Container
+    title Container diagram para OSeMOSYS UPME
+
+    Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones")
+
+    System_Boundary(app, "OSeMOSYS UPME") {
+        Container(frontend, "Frontend Web", "React 19 + TypeScript + Vite", "SPA de escenarios, simulaciones y visualizaciones (Highcharts)")
+        Container(api, "API FastAPI", "Python / FastAPI", "Endpoints REST: escenarios, jobs, progreso, resultados")
+        Container(worker, "Worker Celery", "Python / Celery", "Ejecuta el pipeline de simulación")
+        ContainerDb(db, "PostgreSQL", "PostgreSQL", "Schemas core (usuarios) y osemosys (dominio)")
+        ContainerQueue(queue, "Redis", "Redis", "Broker/backend de Celery")
+    }
+
+    System_Ext(solver, "Solver HiGHS", "Resuelve LP/MILP vía Pyomo (appsi_highs)")
+
+    Rel(analyst, frontend, "Usa", "HTTPS")
+    Rel(frontend, api, "Consume API REST", "HTTPS/JSON")
+    Rel(api, db, "Lee/escribe", "SQL")
+    Rel(api, queue, "Encola simulation_job", "Redis protocol")
+    Rel(worker, queue, "Consume jobs", "Redis protocol")
+    Rel(worker, db, "Persiste resultados y eventos", "SQL")
+    Rel(worker, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")

@@ -66,6 +66,24 @@ El sistema backend OSeMOSYS se integra con:
 - **Redis + Celery** para cola y ejecución asíncrona de optimizaciones.
 - **Solver LP/MILP** (HiGHS vía Pyomo) para resolver el problema matemático.
 
+```mermaid
+C4Context
+    title System Context diagram para OSeMOSYS UPME
+
+    Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones energéticas")
+
+    System(osemosys, "OSeMOSYS UPME", "Plataforma web de planificación energética para Colombia")
+
+    System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
+    System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
+    System_Ext(solver, "Solver HiGHS", "Resuelve el problema LP/MILP vía Pyomo")
+
+    Rel(analyst, osemosys, "Usa vía navegador", "HTTPS")
+    Rel(osemosys, postgres, "Lee/escribe", "SQL")
+    Rel(osemosys, redis, "Encola/consume jobs", "Redis protocol")
+    Rel(osemosys, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+```
+
 ## Vista de contenedores (C4 — Container)
 
 Contenedores lógicos:
@@ -88,6 +106,31 @@ Flujo de alto nivel:
 1. `POST /simulations` crea un `simulation_job` en estado `QUEUED`.
 2. El worker toma el job y lo hace avanzar `RUNNING` → `SUCCEEDED`/`FAILED`/`CANCELLED`.
 3. La API expone estado, logs y resultados (`/result`).
+
+```mermaid
+C4Container
+    title Container diagram para OSeMOSYS UPME
+
+    Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones")
+
+    System_Boundary(app, "OSeMOSYS UPME") {
+        Container(frontend, "Frontend Web", "React 19 + TypeScript + Vite", "SPA de escenarios, simulaciones y visualizaciones (Highcharts)")
+        Container(api, "API FastAPI", "Python / FastAPI", "Endpoints REST: escenarios, jobs, progreso, resultados")
+        Container(worker, "Worker Celery", "Python / Celery", "Ejecuta el pipeline de simulación")
+        ContainerDb(db, "PostgreSQL", "PostgreSQL", "Schemas core (usuarios) y osemosys (dominio)")
+        ContainerQueue(queue, "Redis", "Redis", "Broker/backend de Celery")
+    }
+
+    System_Ext(solver, "Solver HiGHS", "Resuelve LP/MILP vía Pyomo (appsi_highs)")
+
+    Rel(analyst, frontend, "Usa", "HTTPS")
+    Rel(frontend, api, "Consume API REST", "HTTPS/JSON")
+    Rel(api, db, "Lee/escribe", "SQL")
+    Rel(api, queue, "Encola simulation_job", "Redis protocol")
+    Rel(worker, queue, "Consume jobs", "Redis protocol")
+    Rel(worker, db, "Persiste resultados y eventos", "SQL")
+    Rel(worker, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+```
 
 ## Vista de componentes (C4 — Component)
 
@@ -119,6 +162,42 @@ Flujo de alto nivel:
 - `app/simulation/pipeline.py`: orquestación por etapas, cancelación cooperativa y artefactos.
 - `app/simulation/osemosys_core.py`: fachada DB-first.
 - `app/simulation/core/*`: bloques matemáticos Pyomo.
+
+```mermaid
+C4Component
+    title Component diagram — API FastAPI y Motor de Simulación
+
+    Container_Boundary(api, "API FastAPI") {
+        Component(main, "app/main.py", "FastAPI app factory", "CORS y registro de routers")
+        Component(apiv1, "app/api/v1/api.py", "Router composition", "Composición de endpoints v1")
+        Component(simEndpoint, "app/api/v1/simulations.py", "Endpoint", "submit / status / list / cancel / logs / result")
+        Component(simService, "simulation_service.py", "Application Service", "Permisos por escenario, límite de jobs activos, contrato público")
+        Component(simRepo, "simulation_repository.py", "Repository", "CRUD jobs/eventos, queue_position")
+    }
+
+    Container_Boundary(engine, "Motor de Simulación") {
+        Component(celeryApp, "celery_app.py", "Celery init")
+        Component(tasks, "tasks.py", "Task principal del job")
+        Component(pipeline, "pipeline.py", "Orquestación por etapas y cancelación cooperativa")
+        Component(core, "osemosys_core.py", "Fachada DB-first")
+        Component(blocks, "core/*.py", "Bloques Pyomo", "sets, variables, restricciones, objetivo, solver")
+    }
+
+    ContainerDb(db, "PostgreSQL", "PostgreSQL")
+    ContainerQueue(queue, "Redis", "Redis")
+
+    Rel(main, apiv1, "monta")
+    Rel(apiv1, simEndpoint, "registra")
+    Rel(simEndpoint, simService, "llama")
+    Rel(simService, simRepo, "usa")
+    Rel(simRepo, db, "consulta/persiste")
+    Rel(simService, queue, "encola task")
+    Rel(queue, tasks, "dispara")
+    Rel(tasks, pipeline, "ejecuta")
+    Rel(pipeline, core, "usa")
+    Rel(core, blocks, "ensambla y resuelve")
+    Rel(pipeline, db, "persiste resultados y eventos")
+```
 
 El detalle completo de la formulación matemática, el solver y el procesamiento de resultados vive en [Motor de simulación OSeMOSYS](motor-osemosys.md); esta página se limita al mapa de módulos.
 

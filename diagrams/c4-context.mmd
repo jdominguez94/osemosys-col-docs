@@ -1,0 +1,15 @@
+C4Context
+    title System Context diagram para OSeMOSYS UPME
+
+    Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones energéticas")
+
+    System(osemosys, "OSeMOSYS UPME", "Plataforma web de planificación energética para Colombia")
+
+    System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
+    System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
+    System_Ext(solver, "Solver HiGHS", "Resuelve el problema LP/MILP vía Pyomo")
+
+    Rel(analyst, osemosys, "Usa vía navegador", "HTTPS")
+    Rel(osemosys, postgres, "Lee/escribe", "SQL")
+    Rel(osemosys, redis, "Encola/consume jobs", "Redis protocol")
+    Rel(osemosys, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
