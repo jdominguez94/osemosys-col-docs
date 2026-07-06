@@ -15,6 +15,19 @@ Internamente, cada simulación plantea un problema de optimización lineal (mini
 
 Ambos modos alimentan el mismo motor de simulación y producen resultados visualizables de la misma manera. Ver [Escenarios y catálogos](escenarios.md) y [Carga de datos Excel/SAND](carga-excel-sand.md) respectivamente.
 
+```mermaid
+flowchart LR
+    subgraph M1["Modo DB (principal)"]
+        A["Crear o editar escenario"] --> B[("PostgreSQL")]
+    end
+    subgraph M2["Modo Excel / SAND (standalone)"]
+        C["Subir archivo SAND (.xlsx)"] --> D["Sin base de datos"]
+    end
+    B --> E["Motor de simulación"]
+    D --> E
+    E --> F["Resultados: gráficas, comparación, reportes"]
+```
+
 ## Flujo general de trabajo
 
 ```text
@@ -33,7 +46,6 @@ Ambos modos alimentan el mismo motor de simulación y producen resultados visual
 
 ## Funcionalidades adicionales para analistas avanzados
 
-- **Restricciones definidas por el usuario (UDC)**: permiten imponer límites lineales adicionales sobre capacidad o actividad de tecnologías (por ejemplo, un margen de reserva personalizado) sin modificar el modelo base. Ver [UDC](udc.md).
 - **Diagnóstico de infactibilidad**: si una simulación no encuentra solución, la aplicación identifica qué restricciones y parámetros están en conflicto. Ver [Simulaciones](simulaciones.md#resultados-infactibles).
 - **Explorador de datos de resultados**: una vista de tabla de formato ancho con filtrado por múltiples dimensiones (variable, región, tecnología, combustible, emisión, timeslice, modo, almacenamiento) y exportación a Excel.
 

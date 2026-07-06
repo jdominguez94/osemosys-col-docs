@@ -23,7 +23,6 @@ El archivo debe seguir el formato SAND esperado por la aplicación (una hoja **P
 
 ## Qué NO está disponible en este modo
 
-- **Restricciones definidas por el usuario (UDC)**: al no existir un escenario en base de datos, no hay dónde asociar una configuración UDC; el modelo siempre corre sin restricciones UDC en este modo. Ver [UDC](udc.md).
 - **Persistencia del escenario como reutilizable**: los datos de entrada no quedan guardados como escenario; si necesitas volver a simular con los mismos datos, deberás volver a subir el archivo (o importarlo como escenario en base de datos).
 
 ## Visualización de resultados

@@ -117,5 +117,4 @@ Para quienes necesitan revisar los datos crudos de una simulación (no solo las 
 ## Siguientes pasos
 
 - [Simulaciones](simulaciones.md) para entender el ciclo de vida del job cuyo resultado estás visualizando.
-- [UDC](udc.md) si tu escenario incluye restricciones personalizadas que afectan los resultados.
 - [Arquitectura](../architecture/overview.md) para el detalle técnico del motor de gráficas (`chart_service`, catálogos de configuración, etc.).

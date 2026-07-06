@@ -105,9 +105,6 @@ Desde el escenario elegido, inicia una nueva simulación. Al hacerlo, la aplicac
 2. Encola una tarea en segundo plano (un worker de Celery) que ejecuta el pipeline completo: exporta los datos del escenario a CSV, construye el modelo de optimización (Pyomo) y lo resuelve con el solver configurado (HiGHS por defecto; Gurobi, CPLEX o Mosek si el escenario lo especifica).
 3. Persiste los resultados en la base de datos y en un archivo JSON asociado al job.
 
-!!! note "Restricciones definidas por el usuario (UDC)"
-    Si el escenario tiene habilitadas restricciones definidas por el usuario (por ejemplo, un margen de reserva personalizado), estas se incorporan automáticamente al modelo antes de resolverlo. Ver [UDC](../user-guide/udc.md).
-
 !!! example "📸 Captura pendiente"
     Botón/pantalla para lanzar la simulación.
 

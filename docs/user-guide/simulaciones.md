@@ -6,8 +6,6 @@ Una simulación (también llamada "job" o trabajo) es la ejecución del modelo d
 
 Desde un escenario ya creado (ver [Escenarios y catálogos](escenarios.md)), inicia una nueva simulación. Al confirmar, la aplicación encola la ejecución para que corra en segundo plano — no necesitas mantener la página abierta mientras se resuelve.
 
-Si el escenario tiene habilitadas restricciones definidas por el usuario, estas se aplican automáticamente al modelo antes de resolverlo (ver [UDC](udc.md)).
-
 ## Ciclo de vida de una simulación
 
 Una vez lanzada, la simulación pasa por las siguientes etapas internamente:
@@ -42,5 +40,4 @@ Este análisis puede tardar un poco más que la simulación original, ya que rec
 ## Siguientes pasos
 
 - [Visualizaciones y reportes](visualizaciones.md) para explorar los resultados de una simulación exitosa.
-- [UDC](udc.md) para entender cómo las restricciones personalizadas afectan la factibilidad del modelo.
 - [Escenarios y catálogos](escenarios.md) para ajustar los datos de entrada si tu simulación resultó infactible.

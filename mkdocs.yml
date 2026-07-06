@@ -74,7 +74,6 @@ nav:
       - Escenarios y catálogos: user-guide/escenarios.md
       - Simulaciones: user-guide/simulaciones.md
       - Visualizaciones y reportes: user-guide/visualizaciones.md
-      - Restricciones definidas por el usuario (UDC): user-guide/udc.md
       - Carga de datos Excel/SAND: user-guide/carga-excel-sand.md
   - Arquitectura y Referencia:
       - Visión general (C4): architecture/overview.md
