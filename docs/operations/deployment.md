@@ -2,6 +2,44 @@
 
 Esta página describe cómo poner en marcha el stack completo de Osemosys UPME con Docker Compose, orientada a quien opera el sistema (no al usuario final de la aplicación web).
 
+## Formas de desplegar
+
+Hay tres formas de poner en marcha (o volver a levantar) el stack, según qué tan cerca de producción necesites estar:
+
+| Forma | Cuándo usarla | Requiere Docker | Base de datos | Simulaciones |
+|---|---|---|---|---|
+| [`task up`](#atajo-con-task) | Forma recomendada para levantar todo de una vez (dev/staging/producción) | Sí | PostgreSQL | Asíncronas (Celery + Redis) |
+| [`docker compose` directo](#levantar-el-stack-completo-docker-compose) | Cuando necesitas control fino paso a paso (build, migraciones y seed por separado), o no tienes `go-task` instalado | Sí | PostgreSQL | Asíncronas (Celery + Redis) |
+| [Modo local sin Docker](#alternativa-local-sin-docker-sqlite) | Desarrollo del backend en solitario, sin levantar contenedores | No | SQLite | Síncronas (sin cola) |
+
+=== "task"
+
+    ```bash
+    task up
+    ```
+
+    Atajo que ejecuta build, migraciones y seed en un solo comando. Ver [detalle](#atajo-con-task).
+
+=== "docker compose"
+
+    ```bash
+    docker compose up -d --build
+    docker compose exec api alembic upgrade head
+    docker compose exec api python scripts/seed.py
+    ```
+
+    Los mismos tres pasos que `task up`, explícitos. Ver [detalle](#levantar-el-stack-completo-docker-compose).
+
+=== "Local (sin Docker)"
+
+    ```powershell
+    .\scripts\setup-local.ps1
+    .\scripts\init-local-db.ps1
+    .\scripts\run-local-api.ps1
+    ```
+
+    Backend con SQLite y simulaciones síncronas, sin Postgres/Redis/Celery. Ver [detalle](#alternativa-local-sin-docker-sqlite).
+
 ## Prerrequisitos
 
 - Docker Desktop (o Docker Engine + Docker Compose Plugin).

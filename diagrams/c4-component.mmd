@@ -14,11 +14,19 @@ C4Component
         Component(tasks, "tasks.py", "Task principal del job")
         Component(pipeline, "pipeline.py", "Orquestación por etapas y cancelación cooperativa")
         Component(core, "osemosys_core.py", "Fachada DB-first")
-        Component(blocks, "core/*.py", "Bloques Pyomo", "sets, variables, restricciones, objetivo, solver")
+        Component(blocks, "core/*.py", "Bloques Pyomo", "sets, variables, restricciones, objetivo")
+        Component(runner, "core/model_runner.py", "Runner", "Ensambla el modelo y llama a pyo.SolverFactory(nombre_solver)")
     }
 
     ContainerDb(db, "PostgreSQL", "PostgreSQL")
     ContainerQueue(queue, "Redis", "Redis")
+
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Por defecto")
+        System_Ext(gurobi, "Gurobi", "Comercial")
+        System_Ext(cplex, "CPLEX", "Comercial")
+        System_Ext(mosek, "Mosek", "Comercial")
+    }
 
     Rel(main, apiv1, "monta")
     Rel(apiv1, simEndpoint, "registra")
@@ -29,5 +37,10 @@ C4Component
     Rel(queue, tasks, "dispara")
     Rel(tasks, pipeline, "ejecuta")
     Rel(pipeline, core, "usa")
-    Rel(core, blocks, "ensambla y resuelve")
+    Rel(core, blocks, "ensambla")
+    Rel(blocks, runner, "modelo listo para resolver")
+    Rel(runner, highs, "resuelve (por defecto)", "Pyomo")
+    Rel(runner, gurobi, "resuelve si configurado", "Pyomo")
+    Rel(runner, cplex, "resuelve si configurado", "Pyomo")
+    Rel(runner, mosek, "resuelve si configurado", "Pyomo")
     Rel(pipeline, db, "persiste resultados y eventos")

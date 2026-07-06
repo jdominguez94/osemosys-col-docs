@@ -12,7 +12,7 @@ Esta página es la referencia arquitectónica del backend OSeMOSYS UPME: primero
 - **Migraciones**: Alembic
 - **Autenticación**: JWT (HS256)
 - **Cola/asíncrono**: Redis + Celery
-- **Solver**: HiGHS vía Pyomo (`appsi_highs`)
+- **Solvers**: HiGHS (`appsi_highs`, por defecto), Gurobi, CPLEX y Mosek vía Pyomo — seleccionables por escenario mediante el catálogo `solver`
 
 ### Estructura de carpetas
 
@@ -64,7 +64,7 @@ El sistema backend OSeMOSYS se integra con:
 - **Frontend web** que consume la API REST para escenarios, jobs, progreso y resultados (ver [Frontend](frontend.md)).
 - **PostgreSQL** como fuente de verdad de insumos/modelo y estado de ejecución.
 - **Redis + Celery** para cola y ejecución asíncrona de optimizaciones.
-- **Solver LP/MILP** (HiGHS vía Pyomo) para resolver el problema matemático.
+- **Solvers LP/MILP** (HiGHS, Gurobi, CPLEX, Mosek — vía Pyomo) para resolver el problema matemático.
 
 ```mermaid
 C4Context
@@ -76,12 +76,21 @@ C4Context
 
     System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
     System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
-    System_Ext(solver, "Solver HiGHS", "Resuelve el problema LP/MILP vía Pyomo")
+
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Solver por defecto, open-source")
+        System_Ext(gurobi, "Gurobi", "Solver comercial")
+        System_Ext(cplex, "CPLEX", "Solver comercial (IBM)")
+        System_Ext(mosek, "Mosek", "Solver comercial")
+    }
 
     Rel(analyst, osemosys, "Usa vía navegador", "HTTPS")
     Rel(osemosys, postgres, "Lee/escribe", "SQL")
     Rel(osemosys, redis, "Encola/consume jobs", "Redis protocol")
-    Rel(osemosys, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+    Rel(osemosys, highs, "Invoca (solver por defecto)", "Pyomo")
+    Rel(osemosys, gurobi, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(osemosys, cplex, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(osemosys, mosek, "Invoca si el escenario lo configura", "Pyomo")
 ```
 
 ## Vista de contenedores (C4 — Container)
@@ -121,7 +130,12 @@ C4Container
         ContainerQueue(queue, "Redis", "Redis", "Broker/backend de Celery")
     }
 
-    System_Ext(solver, "Solver HiGHS", "Resuelve LP/MILP vía Pyomo (appsi_highs)")
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Por defecto, open-source")
+        System_Ext(gurobi, "Gurobi", "Comercial")
+        System_Ext(cplex, "CPLEX", "Comercial (IBM)")
+        System_Ext(mosek, "Mosek", "Comercial")
+    }
 
     Rel(analyst, frontend, "Usa", "HTTPS")
     Rel(frontend, api, "Consume API REST", "HTTPS/JSON")
@@ -129,7 +143,10 @@ C4Container
     Rel(api, queue, "Encola simulation_job", "Redis protocol")
     Rel(worker, queue, "Consume jobs", "Redis protocol")
     Rel(worker, db, "Persiste resultados y eventos", "SQL")
-    Rel(worker, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+    Rel(worker, highs, "Invoca (solver por defecto)", "Pyomo")
+    Rel(worker, gurobi, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(worker, cplex, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(worker, mosek, "Invoca si el escenario lo configura", "Pyomo")
 ```
 
 ## Vista de componentes (C4 — Component)
@@ -180,11 +197,19 @@ C4Component
         Component(tasks, "tasks.py", "Task principal del job")
         Component(pipeline, "pipeline.py", "Orquestación por etapas y cancelación cooperativa")
         Component(core, "osemosys_core.py", "Fachada DB-first")
-        Component(blocks, "core/*.py", "Bloques Pyomo", "sets, variables, restricciones, objetivo, solver")
+        Component(blocks, "core/*.py", "Bloques Pyomo", "sets, variables, restricciones, objetivo")
+        Component(runner, "core/model_runner.py", "Runner", "Ensambla el modelo y llama a pyo.SolverFactory(nombre_solver)")
     }
 
     ContainerDb(db, "PostgreSQL", "PostgreSQL")
     ContainerQueue(queue, "Redis", "Redis")
+
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Por defecto")
+        System_Ext(gurobi, "Gurobi", "Comercial")
+        System_Ext(cplex, "CPLEX", "Comercial")
+        System_Ext(mosek, "Mosek", "Comercial")
+    }
 
     Rel(main, apiv1, "monta")
     Rel(apiv1, simEndpoint, "registra")
@@ -195,7 +220,12 @@ C4Component
     Rel(queue, tasks, "dispara")
     Rel(tasks, pipeline, "ejecuta")
     Rel(pipeline, core, "usa")
-    Rel(core, blocks, "ensambla y resuelve")
+    Rel(core, blocks, "ensambla")
+    Rel(blocks, runner, "modelo listo para resolver")
+    Rel(runner, highs, "resuelve (por defecto)", "Pyomo")
+    Rel(runner, gurobi, "resuelve si configurado", "Pyomo")
+    Rel(runner, cplex, "resuelve si configurado", "Pyomo")
+    Rel(runner, mosek, "resuelve si configurado", "Pyomo")
     Rel(pipeline, db, "persiste resultados y eventos")
 ```
 

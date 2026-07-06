@@ -38,7 +38,7 @@ Flujo lógico:
 - **Backend API**: FastAPI (`app/main.py`, routers en `app/api/v1`).
 - **Persistencia**: PostgreSQL con esquemas `osemosys` (modelo energético, jobs, parámetros) y `core` (usuarios/documentos).
 - **Cola y ejecución concurrente**: Redis como broker/backend Celery; worker dedicado `simulation-worker`.
-- **Motor de optimización**: Pyomo + solver `appsi_highs` (HiGHS) — ver [Motor de simulación OSeMOSYS](motor-osemosys.md).
+- **Motor de optimización**: Pyomo + solvers intercambiables (HiGHS por defecto, Gurobi, CPLEX, Mosek) — ver [Motor de simulación OSeMOSYS](motor-osemosys.md).
 
 **Separación por capas:**
 

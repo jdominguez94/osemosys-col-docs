@@ -7,9 +7,18 @@ C4Context
 
     System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
     System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
-    System_Ext(solver, "Solver HiGHS", "Resuelve el problema LP/MILP vía Pyomo")
+
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Solver por defecto, open-source")
+        System_Ext(gurobi, "Gurobi", "Solver comercial")
+        System_Ext(cplex, "CPLEX", "Solver comercial (IBM)")
+        System_Ext(mosek, "Mosek", "Solver comercial")
+    }
 
     Rel(analyst, osemosys, "Usa vía navegador", "HTTPS")
     Rel(osemosys, postgres, "Lee/escribe", "SQL")
     Rel(osemosys, redis, "Encola/consume jobs", "Redis protocol")
-    Rel(osemosys, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+    Rel(osemosys, highs, "Invoca (solver por defecto)", "Pyomo")
+    Rel(osemosys, gurobi, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(osemosys, cplex, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(osemosys, mosek, "Invoca si el escenario lo configura", "Pyomo")

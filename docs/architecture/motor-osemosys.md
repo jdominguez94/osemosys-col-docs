@@ -115,19 +115,28 @@ Minimiza (implementada en `app/simulation/core/objective.py`):
 - **Cotas numéricas de estabilidad**:
   - `dispatch <= 5 * base_value` para evitar explosión numérica.
 
-## Resolución con Pyomo y HiGHS
+## Resolución con Pyomo — solvers soportados
 
-- **Solver actual**: HiGHS vía `appsi_highs`.
-- **Motivación**: rendimiento robusto para LP/MILP grandes y despliegue sencillo en contenedor Python.
-- **Parámetros actuales**: ejecución por defecto (sin tuning avanzado explícito en código).
+El motor resuelve el modelo LP/MILP a través de Pyomo, que actúa como capa de abstracción sobre distintos solvers intercambiables. El catálogo `solver` (ver [Backend](backend.md)) permite seleccionar, por escenario/simulación, cuál de estos usar:
+
+- **HiGHS** (`appsi_highs`) — solver open-source por defecto, sin licencia requerida.
+- **Gurobi** — solver comercial de alto desempeño para LP/MILP grandes.
+- **CPLEX** — solver comercial de IBM, alternativa habitual en optimización energética.
+- **Mosek** — solver comercial con buen desempeño en problemas cónicos/LP de gran escala.
+
+Notas generales:
+
+- **Motivación de tener varios solvers**: HiGHS cubre el caso por defecto sin costo de licencia; los solvers comerciales (Gurobi/CPLEX/Mosek) se usan cuando el tamaño/complejidad de la instancia lo justifica o cuando ya se cuenta con licencia institucional.
+- **Parámetros actuales**: ejecución por defecto por solver (sin tuning avanzado explícito en código).
 - **Naturaleza de la carga**: fuertemente **CPU-bound** durante `solve`; I/O-bound principalmente en la carga/escritura de datos y artefactos.
-- **Runner**: `app/simulation/core/model_runner.py` ensambla el modelo, ejecuta `pyo.SolverFactory("appsi_highs")` y extrae resultados.
+- **Runner**: `app/simulation/core/model_runner.py` ensambla el modelo, resuelve vía `pyo.SolverFactory(<solver_seleccionado>)` (`appsi_highs`, `gurobi`, `cplex` o `mosek` según configuración) y extrae resultados.
 
-Cómo cambiar de solver:
+Cómo agregar o cambiar el solver por defecto:
 
-1. Reemplazar `pyo.SolverFactory("appsi_highs")` en `model_runner.py`.
-2. Agregar la dependencia/binario del nuevo solver al contenedor.
-3. Revalidar factibilidad, tiempos y tolerancias numéricas.
+1. Confirmar que el nombre del solver está registrado en el catálogo `solver`.
+2. Ajustar `pyo.SolverFactory(...)` en `model_runner.py` si se cambia el default.
+3. Asegurar que la licencia/binario del solver comercial (Gurobi/CPLEX/Mosek) esté disponible en el contenedor/host donde corre el worker.
+4. Revalidar factibilidad, tiempos y tolerancias numéricas — los resultados pueden variar levemente entre solvers en problemas degenerados.
 
 ### Rendimiento y escalabilidad
 

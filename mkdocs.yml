@@ -7,20 +7,20 @@ docs_dir: docs
 theme:
   name: material
   language: es
-  icon:
-    logo: material/lightning-bolt
+  logo: assets/upme-logo.jpg
+  favicon: assets/upme-logo.jpg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: amber
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Cambiar a modo oscuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: amber
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Cambiar a modo claro

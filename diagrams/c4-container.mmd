@@ -11,7 +11,12 @@ C4Container
         ContainerQueue(queue, "Redis", "Redis", "Broker/backend de Celery")
     }
 
-    System_Ext(solver, "Solver HiGHS", "Resuelve LP/MILP vía Pyomo (appsi_highs)")
+    System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
+        System_Ext(highs, "HiGHS", "Por defecto, open-source")
+        System_Ext(gurobi, "Gurobi", "Comercial")
+        System_Ext(cplex, "CPLEX", "Comercial (IBM)")
+        System_Ext(mosek, "Mosek", "Comercial")
+    }
 
     Rel(analyst, frontend, "Usa", "HTTPS")
     Rel(frontend, api, "Consume API REST", "HTTPS/JSON")
@@ -19,4 +24,7 @@ C4Container
     Rel(api, queue, "Encola simulation_job", "Redis protocol")
     Rel(worker, queue, "Consume jobs", "Redis protocol")
     Rel(worker, db, "Persiste resultados y eventos", "SQL")
-    Rel(worker, solver, "Invoca para resolver el modelo", "Pyomo/appsi_highs")
+    Rel(worker, highs, "Invoca (solver por defecto)", "Pyomo")
+    Rel(worker, gurobi, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(worker, cplex, "Invoca si el escenario lo configura", "Pyomo")
+    Rel(worker, mosek, "Invoca si el escenario lo configura", "Pyomo")

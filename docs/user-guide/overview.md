@@ -4,7 +4,7 @@ OSeMOSYS UPME es una aplicación web para planificadores y analistas energético
 
 ## ¿Qué resuelve la aplicación?
 
-Internamente, cada simulación plantea un problema de optimización lineal (minimización de costos del sistema energético sujeto a restricciones de demanda, capacidad, disponibilidad de recursos, emisiones, etc.) que se resuelve con el solver HiGHS. Como usuario, no necesitas interactuar con esa capa matemática: la aplicación se encarga de traducir tus datos de entrada y tus decisiones de configuración en un modelo resoluble, y de traducir la solución de vuelta a gráficas y tablas comprensibles.
+Internamente, cada simulación plantea un problema de optimización lineal (minimización de costos del sistema energético sujeto a restricciones de demanda, capacidad, disponibilidad de recursos, emisiones, etc.) que se resuelve con un solver de programación lineal (HiGHS por defecto; Gurobi, CPLEX o Mosek según la configuración del escenario). Como usuario, no necesitas interactuar con esa capa matemática: la aplicación se encarga de traducir tus datos de entrada y tus decisiones de configuración en un modelo resoluble, y de traducir la solución de vuelta a gráficas y tablas comprensibles.
 
 ## Dos modos de trabajo
 
