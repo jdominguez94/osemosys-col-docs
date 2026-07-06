@@ -1,5 +1,18 @@
 # CI/CD de OSeMOSYS
 
+## ¿Cuándo tiene sentido usar CI/CD?
+
+CI/CD solo tiene sentido cuando el servidor donde corre la aplicación es **distinto de tu máquina local** — es decir, cuando necesitas que el código llegue automáticamente a un servidor remoto (`staging`, `production`) cada vez que se hace push/merge, sin ejecutar los pasos a mano. Si solo trabajas en local, no necesitas nada de esto: basta con `docker compose up` (ver [Despliegue](deployment.md)).
+
+Para que un pipeline pueda desplegar en un servidor remoto necesitas un **runner**: un agente que corre en (o con acceso a) ese servidor y ejecuta ahí los pasos del pipeline (build, tests, deploy). Las opciones más comunes son:
+
+- **GitHub Actions runner** (self-hosted o gestionado por GitHub) — la que usa este proyecto (ver "Cuándo despliega CD" abajo, el runner `self-hosted`).
+- **GitLab Runner**.
+- **Jenkins** (agente/nodo).
+- **ArgoCD** (despliegue continuo estilo GitOps: sincroniza el estado deseado del repo contra un clúster Kubernetes).
+
+Sin un runner registrado en el servidor de destino, el pipeline puede validar/compilar (CI), pero no tiene forma de aplicar el despliegue ahí (CD).
+
 ## Qué valida CI
 
 - `docker compose config -q` para validar sintaxis y variables.
@@ -83,4 +96,3 @@ SECRET_KEY="$(openssl rand -hex 32)" APP_PASSWORD='Cambio123!' ./scripts/deploy-
 
 - [Despliegue](deployment.md) para el procedimiento manual completo de puesta en marcha del stack.
 - [Runbook](runbook.md) para diagnóstico post-despliegue.
-- [Monitoreo](monitoring.md) para observabilidad continua de `production`/`staging`.

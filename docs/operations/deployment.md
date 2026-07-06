@@ -164,6 +164,4 @@ Existen además otros scripts en `scripts/` (`disk_audit.sh`, `local-db.ps1`, `p
 
 - [Runbook](runbook.md) para diagnóstico y respuesta a incidentes una vez el stack está arriba.
 - [CI/CD](ci-cd.md) para el despliegue automatizado en `staging`/`production` y las variables esperadas en GitHub Actions.
-- [Monitoreo](monitoring.md) para observabilidad continua post-despliegue.
-- [Pruebas E2E](e2e.md) para validar la integración real frontend-backend tras el despliegue.
 - [Variables de entorno](../getting-started/environment-variables.md) para el detalle de cada variable.

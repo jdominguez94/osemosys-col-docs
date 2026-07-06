@@ -79,6 +79,5 @@ Con estos cuatro pasos deberías tener una hipótesis de causa raíz inicial.
 
 ## Referencias relacionadas
 
-- [Monitoreo](monitoring.md) para snapshots periódicos de recursos y actividad.
 - [Despliegue](deployment.md) para levantar o reiniciar el stack completo.
 - [CI/CD](ci-cd.md) para el contexto de despliegue automatizado.
