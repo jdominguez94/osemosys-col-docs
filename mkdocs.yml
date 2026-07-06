@@ -79,8 +79,6 @@ nav:
   - Arquitectura y Referencia:
       - Visión general (C4): architecture/overview.md
       - Motor de simulación OSeMOSYS: architecture/motor-osemosys.md
-      - Paridad Notebook vs App: architecture/paridad-notebook.md
-      - Comparar resultados: architecture/comparar-resultados.md
       - Configuración de series de gráficas: architecture/series-graficas.md
       - Frontend: architecture/frontend.md
       - Backend: architecture/backend.md
@@ -91,5 +89,5 @@ nav:
       - Despliegue: operations/deployment.md
       - Pruebas E2E: operations/e2e.md
   - Ejemplos:
-      - Notebook UPME OPT: examples/notebook.md
+      - Archivos SAND: examples/sand-files.md
   - Contribuir: contributing.md

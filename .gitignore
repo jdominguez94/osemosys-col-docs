@@ -1,3 +1,7 @@
 site/
 .DS_Store
 __pycache__/
+
+# Archivos SAND de referencia (grandes, no versionar en el proyecto de docs)
+/*.xlsx
+/*.xlsm

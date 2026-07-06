@@ -25,8 +25,6 @@ Validaciones actuales:
 !!! warning "Supuestos implícitos"
     Los parámetros faltantes usan defaults operativos (`1.0`, `0.0` o `inf` según el caso) y varias restricciones avanzadas están aproximadas (proxy), sin expandir completamente la estructura temporal canónica.
 
-Para el detalle fila a fila de cómo se transforman los datos antes del modelado (y cómo se compara con el notebook de referencia), ver [Paridad Notebook vs App](paridad-notebook.md).
-
 ## Estructura del modelo
 
 ### Sets (actuales)
@@ -208,33 +206,15 @@ Impacto esperado: más tecnologías y periodos incrementan el tamaño del proble
 2. Documentar unidades y signo de los nuevos términos.
 3. Actualizar benchmarks y tolerancias.
 
-### Prueba final (notebook vs app)
+### Prueba de reproducibilidad
 
-Para comparar resultados con el notebook UPME (`osemosys_notebook_UPME_OPT_01.ipynb`) usando el escenario **"Escenario prueba final"**:
+Para comprobar que dos corridas idénticas del mismo escenario dan el mismo resultado (determinismo del pipeline):
 
-1. Comprobar que dos corridas idénticas dan el mismo resultado:
+```bash
+docker compose exec api python scripts/run_parity_test.py
+```
 
-   ```bash
-   docker compose exec api python scripts/run_parity_test.py
-   ```
-
-   Ejecuta dos veces la simulación del escenario "Escenario prueba final" y compara; sale con 0 si los resultados son idénticos.
-
-2. Generar el resultado para comparar con el notebook:
-
-   ```bash
-   python scripts/run_prueba_final.py
-   ```
-
-   Genera `tmp/prueba_final_result.json`.
-
-3. Comparar con la referencia del notebook:
-
-   ```bash
-   python scripts/compare_results.py --ref referencia_notebook.json --actual tmp/prueba_final_result.json
-   ```
-
-Ver también [Comparar resultados: app vs notebook](comparar-resultados.md) y [Paridad Notebook vs App](paridad-notebook.md).
+Ejecuta dos veces la simulación de un escenario de referencia y compara; sale con 0 si los resultados son idénticos.
 
 ---
 

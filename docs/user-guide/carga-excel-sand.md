@@ -5,7 +5,7 @@ Además del modo principal de escenarios en base de datos, la aplicación soport
 ## ¿Cuándo usar este modo?
 
 - Para validar rápidamente un archivo de datos sin pasar por el proceso de creación de un escenario.
-- Para reproducir o comparar una corrida hecha originalmente fuera de la aplicación (por ejemplo, en una hoja de cálculo o en el notebook de referencia — ver [Ejemplos: Notebook UPME OPT](../examples/notebook.md)).
+- Para reproducir o comparar una corrida hecha originalmente fuera de la aplicación (por ejemplo, en una hoja de cálculo).
 - Para pruebas puntuales donde no necesitas conservar el escenario para uso futuro.
 
 !!! note "Diferencia clave con el modo DB"
@@ -13,7 +13,7 @@ Además del modo principal de escenarios en base de datos, la aplicación soport
 
 ## Formato del archivo
 
-El archivo debe seguir el formato SAND esperado por la aplicación (una hoja de parámetros con la estructura de sets y valores que usa el modelo OSeMOSYS). Si no tienes un archivo de referencia, el notebook de validación del proyecto usa este mismo formato de entrada — ver [Ejemplos: Notebook UPME OPT](../examples/notebook.md).
+El archivo debe seguir el formato SAND esperado por la aplicación (una hoja **Parameters** con la estructura de sets y valores que usa el modelo OSeMOSYS). Ver [Ejemplos: Archivos SAND](../examples/sand-files.md) para la ubicación de archivos SAND de referencia y un ejemplo de su estructura.
 
 ## Cómo lanzar una simulación desde Excel/SAND
 
@@ -30,11 +30,12 @@ El archivo debe seguir el formato SAND esperado por la aplicación (una hoja de 
 
 Una vez que la simulación desde Excel/SAND termina, los resultados se visualizan exactamente igual que los de un escenario en base de datos: mismo selector de gráficas, mismos tipos de vista, mismas opciones de exportación. Ver [Visualizaciones y reportes](visualizaciones.md).
 
-## Comparar contra una corrida externa (por ejemplo, el notebook de referencia)
+## Comparar contra una corrida externa
 
-Si tu objetivo es verificar que un archivo Excel produce el mismo resultado en la aplicación que en otra herramienta externa (como el notebook de referencia del proyecto), revisa los indicadores clave del resultado (valor de la función objetivo, demanda total, despacho total, demanda no cubierta) y contrástalos con los de la otra ejecución. Ver [Ejemplos: Notebook UPME OPT](../examples/notebook.md) para más contexto sobre ese notebook de referencia.
+Si tu objetivo es verificar que un archivo Excel produce el mismo resultado en la aplicación que en otra herramienta externa (por ejemplo, una hoja de cálculo de referencia), revisa los indicadores clave del resultado (valor de la función objetivo, demanda total, despacho total, demanda no cubierta) y contrástalos con los de la otra ejecución.
 
 ## Siguientes pasos
 
+- [Ejemplos: Archivos SAND](../examples/sand-files.md) para ver dónde están los archivos SAND de referencia, las políticas que representan y un ejemplo de su estructura.
 - [Visualizaciones y reportes](visualizaciones.md) para explorar los resultados.
 - [Escenarios y catálogos](escenarios.md) si luego decides importar estos datos como un escenario persistente.

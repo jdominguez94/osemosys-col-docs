@@ -25,7 +25,7 @@ Al ejecutar flujos locales o pruebas de paridad se generan archivos temporales q
 
 - `backend/tmp/local/` (SQLite, JSON, CSV, charts y exportaciones de tablas)
 - `backend/tmp/simulation-results/` (artefactos por job)
-- `backend/tmp/local/parity/` y `backend/tmp/local/comparison_csvs/` (comparaciones CLI vs Docker/notebook)
+- `backend/tmp/local/parity/` y `backend/tmp/local/comparison_csvs/` (comparaciones CLI vs Docker)
 
 Todos estos artefactos están cubiertos por `.gitignore`.
 
@@ -76,7 +76,7 @@ Este flujo ejecuta el solver OSeMOSYS leyendo un directorio de CSV ya generados 
 **Prerrequisitos**
 
 - Python 3.11 o superior (`python3 --version`).
-- Directorio de CSV listos para simular (por ejemplo exportados tras el pipeline completo, o generados con la misma lógica que el notebook / `compare_notebook_vs_app`). Si faltan pasos de procesamiento (matrices completas, sets coherentes), la corrida puede fallar o dar resultados inconsistentes.
+- Directorio de CSV listos para simular (por ejemplo exportados tras el pipeline completo). Si faltan pasos de procesamiento (matrices completas, sets coherentes), la corrida puede fallar o dar resultados inconsistentes.
 
 **Comandos previos (una vez por clon del repositorio)**, desde la raíz del repo:
 
@@ -172,7 +172,7 @@ Usuario creado:
 
 ## 5. Prueba SAND (Excel Parameters)
 
-Para ejecutar la prueba con el Excel SAND (hoja **Parameters**) y dejar el resultado listo para comparar con el notebook Jupyter:
+Para ejecutar la prueba con el Excel SAND (hoja **Parameters**):
 
 1. Levantar el stack (si no está levantado):
 
@@ -195,8 +195,6 @@ Para ejecutar la prueba con el Excel SAND (hoja **Parameters**) y dejar el resul
 El script copia el Excel al contenedor, importa la hoja Parameters, ejecuta la simulación (solver `glpk`) y copia el resultado al host en `backend/tmp/sand_04_02_2026_result.json`.
 
 **Timeslices**: en la aplicación web, la opción "Agregar/colapsar timeslices" viene activada por defecto (mismo criterio que antes). Si la desactivas al importar desde Excel, se conservan los timeslices del archivo; valida el escenario ejecutando una simulación. En CLI local, `backend/scripts/run_sand_excel_test.py` admite `--preserve-timeslices` para el mismo efecto.
-
-Para comparar con el notebook: usar el mismo Excel, hoja Parameters y solver `glpk` en el notebook; luego comparar métricas (`objective_value`, `total_demand`, `total_dispatch`, `total_unmet`, `coverage_ratio`) o usar `compare_results.py` como se indica en `backend/docs/OSEMOSYS_PARIDAD.md`.
 
 ## 6. Checklist de prueba funcional desde UI
 

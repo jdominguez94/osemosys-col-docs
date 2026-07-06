@@ -21,7 +21,7 @@ Documentación del modelo energético colombiano construido sobre OSeMOSYS.
 -   :material-sitemap:{ .lg .middle } **Arquitectura y Referencia**
 
     ---
-    Vistas C4, motor de simulación OSeMOSYS y paridad con el notebook de referencia.
+    Vistas C4 y motor de simulación OSeMOSYS.
 
     [:octicons-arrow-right-24: Explorar](architecture/overview.md)
 
