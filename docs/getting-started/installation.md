@@ -1,6 +1,6 @@
 # Instalación
 
-Esta página explica cómo levantar OSeMOSYS UPME por primera vez, ya sea para evaluar la aplicación o para empezar a desarrollar sobre ella. Hay dos caminos: el stack completo con Docker (recomendado) o un modo local sin Docker basado en SQLite.
+Esta página explica cómo levantar OSeMOSYS Colombia por primera vez, ya sea para evaluar la aplicación o para empezar a desarrollar sobre ella. Hay dos caminos: el stack completo con Docker (recomendado) o un modo local sin Docker basado en SQLite.
 
 ## Requisitos previos
 

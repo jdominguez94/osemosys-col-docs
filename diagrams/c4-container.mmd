@@ -1,9 +1,9 @@
 C4Container
-    title Container diagram para OSeMOSYS UPME
+    title Container diagram para OSeMOSYS Colombia
 
     Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones")
 
-    System_Boundary(app, "OSeMOSYS UPME") {
+    System_Boundary(app, "OSeMOSYS Colombia") {
         Container(frontend, "Frontend Web", "React 19 + TypeScript + Vite", "SPA de escenarios, simulaciones y visualizaciones (Highcharts)")
         Container(api, "API FastAPI", "Python / FastAPI", "Endpoints REST: escenarios, jobs, progreso, resultados")
         Container(worker, "Worker Celery", "Python / Celery", "Ejecuta el pipeline de simulación")

@@ -1,6 +1,6 @@
 # Despliegue
 
-Esta página describe cómo poner en marcha el stack completo de Osemosys UPME con Docker Compose, orientada a quien opera el sistema (no al usuario final de la aplicación web).
+Esta página describe cómo poner en marcha el stack completo de OSeMOSYS Colombia con Docker Compose, orientada a quien opera el sistema (no al usuario final de la aplicación web).
 
 ## Formas de desplegar
 

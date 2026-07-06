@@ -1,6 +1,6 @@
 # Backend
 
-Guía técnica del backend OSeMOSYS UPME (FastAPI + Pyomo + Celery). Para la formulación matemática del motor de optimización, el solver y el procesamiento de resultados, ver [Motor de simulación OSeMOSYS](motor-osemosys.md); para las vistas C4 completas, ver [Visión general](overview.md).
+Guía técnica del backend OSeMOSYS Colombia (FastAPI + Pyomo + Celery). Para la formulación matemática del motor de optimización, el solver y el procesamiento de resultados, ver [Motor de simulación OSeMOSYS](motor-osemosys.md); para las vistas C4 completas, ver [Visión general](overview.md).
 
 ## Descripción general
 

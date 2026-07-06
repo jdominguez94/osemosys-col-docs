@@ -1,6 +1,6 @@
 # Visión general (C4)
 
-Esta página es la referencia arquitectónica del backend OSeMOSYS UPME: primero fija las convenciones básicas del proyecto (stack, estructura de carpetas, esquemas de base de datos, autenticación) y luego describe la arquitectura completa con el enfoque **C4** (contexto, contenedores, componentes), el mapa de módulos del motor de simulación, los flujos operacionales críticos y el contrato de resultados.
+Esta página es la referencia arquitectónica del backend OSeMOSYS Colombia: primero fija las convenciones básicas del proyecto (stack, estructura de carpetas, esquemas de base de datos, autenticación) y luego describe la arquitectura completa con el enfoque **C4** (contexto, contenedores, componentes), el mapa de módulos del motor de simulación, los flujos operacionales críticos y el contrato de resultados.
 
 ## Convenciones
 
@@ -68,11 +68,11 @@ El sistema backend OSeMOSYS se integra con:
 
 ```mermaid
 C4Context
-    title System Context diagram para OSeMOSYS UPME
+    title System Context diagram para OSeMOSYS Colombia
 
     Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones energéticas")
 
-    System(osemosys, "OSeMOSYS UPME", "Plataforma web de planificación energética para Colombia")
+    System(osemosys, "OSeMOSYS Colombia", "Plataforma web de planificación energética para Colombia")
 
     System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
     System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
@@ -118,11 +118,11 @@ Flujo de alto nivel:
 
 ```mermaid
 C4Container
-    title Container diagram para OSeMOSYS UPME
+    title Container diagram para OSeMOSYS Colombia
 
     Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones")
 
-    System_Boundary(app, "OSeMOSYS UPME") {
+    System_Boundary(app, "OSeMOSYS Colombia") {
         Container(frontend, "Frontend Web", "React 19 + TypeScript + Vite", "SPA de escenarios, simulaciones y visualizaciones (Highcharts)")
         Container(api, "API FastAPI", "Python / FastAPI", "Endpoints REST: escenarios, jobs, progreso, resultados")
         Container(worker, "Worker Celery", "Python / Celery", "Ejecuta el pipeline de simulación")

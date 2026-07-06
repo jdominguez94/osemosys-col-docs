@@ -1,4 +1,4 @@
-# Osemosys UPME
+# OSeMOSYS Colombia
 
 Documentación del modelo energético colombiano construido sobre OSeMOSYS.
 

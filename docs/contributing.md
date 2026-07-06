@@ -1,6 +1,6 @@
 # Contribuir
 
-Esta página resume cómo preparar un entorno de desarrollo para la aplicación OSeMOSYS UPME, cómo correr sus pruebas y linters, y cómo editar y previsualizar esta misma documentación.
+Esta página resume cómo preparar un entorno de desarrollo para la aplicación OSeMOSYS Colombia, cómo correr sus pruebas y linters, y cómo editar y previsualizar esta misma documentación.
 
 ## Entorno de desarrollo de la aplicación
 
@@ -27,7 +27,7 @@ npm run lint        # eslint
 
 ## Editar y previsualizar este sitio de documentación
 
-Este sitio de documentación es un proyecto **independiente** del repositorio de la aplicación (vive en su propio directorio, separado del código de OSeMOSYS UPME). Está construido con [MkDocs](https://www.mkdocs.org/) y el tema [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), y también está dockerizado para facilitar su edición.
+Este sitio de documentación es un proyecto **independiente** del repositorio de la aplicación (vive en su propio directorio, separado del código de OSeMOSYS Colombia). Está construido con [MkDocs](https://www.mkdocs.org/) y el tema [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), y también está dockerizado para facilitar su edición.
 
 Desde la raíz de este proyecto de documentación:
 
