@@ -2,26 +2,41 @@
   max-width: 1280px;
 }
 
-/* Acento institucional UPME (dorado, tomado del logo oficial) */
+/*
+  Paleta institucional UPME real (muestreada de upme.gov.co):
+  verde flúor #B8FF65 (botones/CTA), gris oscuro #262626 (texto), morado #833CA3 (secundario).
+  Se usa un verde algo más oscuro (#56B100) como color de enlace/acento de texto
+  por legibilidad — el verde flúor puro se reserva para fondos de chips/botones
+  con texto oscuro encima, igual que en el sitio real.
+*/
 [data-md-color-accent="custom"] {
-  --md-accent-fg-color: #E0B62C;
-  --md-accent-fg-color--transparent: #e0b62c1a;
-  --md-accent-bg-color: #000000;
-  --md-accent-bg-color--light: #000000de;
+  --md-accent-fg-color: #56B100;
+  --md-accent-fg-color--transparent: #56b1001a;
+  --md-accent-bg-color: #262626;
+  --md-accent-bg-color--light: #262626de;
 }
 
 /* Header blanco con texto oscuro, como upme.gov.co (no un header de color sólido) */
 [data-md-color-primary="white"] .md-header {
-  color: #01308A;
+  color: #262626;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 [data-md-color-primary="white"] .md-tabs {
-  color: #01308A;
+  color: #262626;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Franja de la bandera de Colombia bajo el menú, como en sitios institucionales de gob.co */
+/* Pestaña activa: chip verde flúor con texto oscuro, como los botones reales de UPME */
+.md-tabs__link--active {
+  background-color: #B8FF65;
+  color: #262626 !important;
+  border-radius: 4px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+/* Franja de marca UPME bajo el menú: verde flúor / gris oscuro / morado */
 .md-tabs {
   position: relative;
 }
@@ -32,38 +47,33 @@
   height: 4px;
   background: linear-gradient(
     to right,
-    #ffc801 0%,
-    #ffc801 33.33%,
-    #01308a 33.33%,
-    #01308a 66.66%,
-    #d80025 66.66%,
-    #d80025 100%
+    #b8ff65 0%,
+    #b8ff65 33.33%,
+    #262626 33.33%,
+    #262626 66.66%,
+    #833ca3 66.66%,
+    #833ca3 100%
   );
 }
 
-/* Logo UPME: siempre visible, en tamaño legible, con chip blanco para que no
-   se pierda en modo oscuro (el archivo original trae fondo blanco sólido) */
+/* Logo UPME: siempre visible en el header, con chip blanco (el archivo trae
+   fondo blanco sólido) para que no se pierda en modo oscuro. !important porque
+   debe ganar siempre sobre el tamaño por defecto del tema. */
 .md-header__button.md-logo {
-  margin: 0.2rem 0.4rem 0.2rem 0;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0.2rem 0.5rem 0.2rem 0 !important;
+  padding: 0.2rem !important;
 }
 
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
-  height: 2.2rem;
-  width: auto;
-  border-radius: 6px;
-  background-color: #ffffff;
-  padding: 3px;
-}
-
-/* Logo destacado en la portada */
-.upme-hero-logo {
-  display: block;
-  margin: 0 auto 1.5rem auto;
-  height: 120px;
-  width: auto;
-  border-radius: 8px;
-  background-color: #ffffff;
-  padding: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  display: inline-block !important;
+  height: 2.4rem !important;
+  width: 2.4rem !important;
+  min-width: 2.4rem !important;
+  border-radius: 6px !important;
+  background-color: #ffffff !important;
+  padding: 3px !important;
+  object-fit: contain;
 }
