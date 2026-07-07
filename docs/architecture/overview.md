@@ -225,8 +225,9 @@ C4Component
     Rel(pipeline, db, "persiste resultados y eventos")
 ```
 
-El detalle completo de la formulación matemática, el solver y el procesamiento de resultados vive en [Motor de simulación OSeMOSYS](motor-osemosys.md); esta página se limita al mapa de módulos.
+El detalle completo de la formulación matemática, el solver y el procesamiento de resultados vive en [Motor de simulación OSeMOSYS](motor-osemosys.md).
 
+<!--
 ## Mapa de módulos del motor OSeMOSYS
 
 ### Ingesta y normalización
@@ -326,3 +327,4 @@ Antes de modificar restricciones/objetivo:
 - Parametrizar el solver por escenario (tiempo límite, tolerancias, estrategia).
 - Completar la paridad matemática de los bloques storage y UDC.
 - Incorporar validaciones semánticas fuertes para la ingesta de parámetros.
+-->

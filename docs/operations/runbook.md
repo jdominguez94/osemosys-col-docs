@@ -35,7 +35,7 @@ task logs:since MIN=30
 !!! note "Servicios afectados por `logs:<servicio>`"
     Los targets de logs por servicio siguen los nombres definidos en `docker-compose.yml`: `api`, `simulation-worker` (worker de simulación), `frontend`, `db` y `redis`.
 
-## Playbooks de incidente
+## Troubleshooting
 
 ### 1) API no levanta / health falla
 
