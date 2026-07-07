@@ -62,9 +62,10 @@ El sistema backend OSeMOSYS se integra con:
 
 - **Usuarios técnicos/analistas** que gestionan escenarios y ejecutan simulaciones.
 - **Frontend web** que consume la API REST para escenarios, jobs, progreso y resultados (ver [Frontend](frontend.md)).
-- **PostgreSQL** como fuente de verdad de insumos/modelo y estado de ejecución.
-- **Redis + Celery** para cola y ejecución asíncrona de optimizaciones.
 - **Solvers LP/MILP** (HiGHS, Gurobi, CPLEX, Mosek — vía Pyomo) para resolver el problema matemático.
+
+!!! note "PostgreSQL y Redis no aparecen como sistemas externos"
+    A este nivel de zoom (Contexto), PostgreSQL y Redis son infraestructura **interna** de OSeMOSYS Colombia (se despliegan juntos en el mismo stack) y quedan implícitos dentro de la caja del sistema. Aparecen como contenedores propios recién en la vista de Contenedores, más abajo.
 
 ```mermaid
 C4Context
@@ -72,10 +73,7 @@ C4Context
 
     Person(analyst, "Analista/Planificador", "Crea escenarios y ejecuta simulaciones energéticas")
 
-    System(osemosys, "OSeMOSYS Colombia", "Plataforma web de planificación energética para Colombia")
-
-    System_Ext(postgres, "PostgreSQL", "Fuente de verdad: escenarios, parámetros, jobs, resultados")
-    System_Ext(redis, "Redis", "Broker/backend de cola para ejecución asíncrona")
+    System(osemosys, "OSeMOSYS Colombia", "Plataforma web de planificación energética para Colombia (incluye su base de datos y cola internas)")
 
     System_Boundary(solvers, "Solvers LP/MILP (vía Pyomo)") {
         System_Ext(highs, "HiGHS", "Solver por defecto, open-source")
@@ -85,8 +83,6 @@ C4Context
     }
 
     Rel(analyst, osemosys, "Usa vía navegador", "HTTPS")
-    Rel(osemosys, postgres, "Lee/escribe", "SQL")
-    Rel(osemosys, redis, "Encola/consume jobs", "Redis protocol")
     Rel(osemosys, highs, "Invoca (solver por defecto)", "Pyomo")
     Rel(osemosys, gurobi, "Invoca si el escenario lo configura", "Pyomo")
     Rel(osemosys, cplex, "Invoca si el escenario lo configura", "Pyomo")
