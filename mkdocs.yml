@@ -66,6 +66,7 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started:
+      - ¿Qué es OSeMOSYS Colombia?: getting-started/que-es-osemosys.md
       - Instalación: getting-started/installation.md
       - Primera simulación: getting-started/first-simulation.md
       - Variables de entorno: getting-started/environment-variables.md

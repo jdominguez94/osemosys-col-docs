@@ -1,6 +1,6 @@
 # Variables de entorno
 
-Esta página resume las variables de entorno más relevantes para la primera puesta en marcha del stack Docker (definidas en `.env` en la raíz del repositorio de la aplicación, a partir de `.env.example`). No es un listado exhaustivo de todas las variables internas del backend — solo las que un evaluador o desarrollador nuevo necesita conocer para instalar y acceder a la aplicación.
+Esta página resume las variables de entorno más relevantes para la primera puesta en marcha del stack Docker (definidas en `.env` en la raíz del repositorio de la aplicación, a partir de `.env.example`). No es un listado exhaustivo de todas las variables internas del backend, solo las que un evaluador o desarrollador nuevo necesita conocer para instalar y acceder a la aplicación.
 
 !!! tip "Ninguna es obligatoria para empezar"
     Todas las variables tienen un valor por defecto razonable. Solo necesitas crear un archivo `.env` si quieres cambiar puertos, credenciales o límites de ejecución.
@@ -67,5 +67,4 @@ Esta página resume las variables de entorno más relevantes para la primera pue
 
 ## Siguientes pasos
 
-- [Instalación](installation.md) para el procedimiento completo de puesta en marcha.
-- [Primera simulación](first-simulation.md) para el primer recorrido guiado por la interfaz.
+Para el procedimiento completo de puesta en marcha, sigue [Instalación](installation.md). Para el primer recorrido guiado por la interfaz, revisa [Primera simulación](first-simulation.md).

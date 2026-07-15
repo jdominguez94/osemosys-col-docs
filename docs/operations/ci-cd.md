@@ -2,23 +2,17 @@
 
 ## ¿Cuándo tiene sentido usar CI/CD?
 
-CI/CD solo tiene sentido cuando el servidor donde corre la aplicación es **distinto de tu máquina local** — es decir, cuando necesitas que el código llegue automáticamente a un servidor remoto (`staging`, `production`) cada vez que se hace push/merge, sin ejecutar los pasos a mano. Si solo trabajas en local, no necesitas nada de esto: basta con `docker compose up` (ver [Despliegue](deployment.md)).
+CI/CD solo tiene sentido cuando el servidor donde corre la aplicación es **distinto de tu máquina local**. Es decir, cuando necesitas que el código llegue automáticamente a un servidor remoto (`staging`, `production`) cada vez que se hace push o merge, sin ejecutar los pasos a mano. Si solo trabajas en local, no necesitas nada de esto. Basta con `docker compose up` (ver [Despliegue](deployment.md)).
 
-Para que un pipeline pueda desplegar en un servidor remoto necesitas un **runner**: un agente que corre en (o con acceso a) ese servidor y ejecuta ahí los pasos del pipeline (build, tests, deploy). Las opciones más comunes son:
+Para que un pipeline pueda desplegar en un servidor remoto necesitas un **runner**, un agente que corre en (o con acceso a) ese servidor y ejecuta ahí los pasos del pipeline (build, tests, deploy). Estas son las opciones más comunes.
 
-- **GitHub Actions runner** (self-hosted o gestionado por GitHub) — la que usa este proyecto (ver "Cuándo despliega CD" abajo, el runner `self-hosted`).
-- **GitLab Runner**.
-- **Jenkins** (agente/nodo).
-- **ArgoCD** (despliegue continuo estilo GitOps: sincroniza el estado deseado del repo contra un clúster Kubernetes).
+El **GitHub Actions runner** (self-hosted o gestionado por GitHub) es el que usa este proyecto (ver "Cuándo despliega CD" abajo, el runner `self-hosted`). También existen **GitLab Runner**, **Jenkins** (como agente o nodo) y **ArgoCD** (despliegue continuo estilo GitOps, que sincroniza el estado deseado del repo contra un clúster Kubernetes).
 
-Sin un runner registrado en el servidor de destino, el pipeline puede validar/compilar (CI), pero no tiene forma de aplicar el despliegue ahí (CD).
+Sin un runner registrado en el servidor de destino, el pipeline puede validar o compilar (CI), pero no tiene forma de aplicar el despliegue ahí (CD).
 
 ## Qué valida CI
 
-- `docker compose config -q` para validar sintaxis y variables.
-- Frontend con `npm ci`, `npm run typecheck` y `npm run build`.
-- Backend con `docker compose run --rm api python -m pytest -q`.
-- Build de imágenes `api`, `simulation-worker` y `frontend`.
+CI corre `docker compose config -q` para validar sintaxis y variables, corre el frontend con `npm ci`, `npm run typecheck` y `npm run build`, corre el backend con `docker compose run --rm api python -m pytest -q`, y construye las imágenes `api`, `simulation-worker` y `frontend`.
 
 ## Cuándo despliega CD
 
@@ -31,52 +25,51 @@ Sin un runner registrado en el servidor de destino, el pipeline puede validar/co
 
 ## Variables esperadas en GitHub Actions
 
-- `vars.COMPOSE_PROJECT_NAME`
-- `vars.FRONTEND_BIND_HOST`
-- `vars.FRONTEND_PORT`
-- `vars.FRONTEND_API_UPSTREAM` (ej. `api:8000` o `osemosys-backend-api:8000`)
-- `vars.BACKEND_BRIDGE_NETWORK` (por defecto `osemosys_api_bridge`)
-- `vars.API_BIND_HOST`
-- `vars.API_PORT`
-- `vars.API_WORKERS`
-- `vars.POSTGRES_BIND_HOST`
-- `vars.POSTGRES_PORT`
-- `vars.REDIS_BIND_HOST`
-- `vars.REDIS_PORT`
-- `vars.BACKUP_BEFORE_MIGRATIONS`
-- `vars.BACKUP_DIR`
-- `vars.BACKUP_RETENTION_DAYS`
-- `vars.RUN_SEED`
-- `vars.SYNC_APP_USERS`
-- `vars.SIM_WORKER_REPLICAS`
-- `vars.SIM_MAX_CONCURRENCY`
-- `vars.SIM_USER_ACTIVE_LIMIT`
-- `vars.SIM_SOLVER_THREADS`
-- `vars.OMP_NUM_THREADS`
-- `vars.OPENBLAS_NUM_THREADS`
-- `vars.MKL_NUM_THREADS`
-- `vars.APP_USERS`
-- `vars.APP_ADMIN_USERS`
-- `vars.VITE_API_BASE_URL`
-- `vars.VITE_APP_ENV`
-- `vars.VITE_SIMULATION_MODE`
+```
+vars.COMPOSE_PROJECT_NAME
+vars.FRONTEND_BIND_HOST
+vars.FRONTEND_PORT
+vars.FRONTEND_API_UPSTREAM (ej. api:8000 o osemosys-backend-api:8000)
+vars.BACKEND_BRIDGE_NETWORK (por defecto osemosys_api_bridge)
+vars.API_BIND_HOST
+vars.API_PORT
+vars.API_WORKERS
+vars.POSTGRES_BIND_HOST
+vars.POSTGRES_PORT
+vars.REDIS_BIND_HOST
+vars.REDIS_PORT
+vars.BACKUP_BEFORE_MIGRATIONS
+vars.BACKUP_DIR
+vars.BACKUP_RETENTION_DAYS
+vars.RUN_SEED
+vars.SYNC_APP_USERS
+vars.SIM_WORKER_REPLICAS
+vars.SIM_MAX_CONCURRENCY
+vars.SIM_USER_ACTIVE_LIMIT
+vars.SIM_SOLVER_THREADS
+vars.OMP_NUM_THREADS
+vars.OPENBLAS_NUM_THREADS
+vars.MKL_NUM_THREADS
+vars.APP_USERS
+vars.APP_ADMIN_USERS
+vars.VITE_API_BASE_URL
+vars.VITE_APP_ENV
+vars.VITE_SIMULATION_MODE
+```
 
 ## Secretos requeridos
 
-- `secrets.APP_PASSWORD`
-- `secrets.SECRET_KEY`
+```
+secrets.APP_PASSWORD
+secrets.SECRET_KEY
+```
 
 !!! warning "Rechazo de placeholders"
     El workflow fuerza checkout limpio del `GITHUB_SHA` y **rechaza** un `SECRET_KEY` de tipo placeholder. Debe generarse un valor real (ver ejemplo de despliegue manual más abajo).
 
 ## Exposición de servicios
 
-- Por defecto solo el `frontend` debe quedar expuesto.
-- Usa `API_BIND_HOST=127.0.0.1`, `POSTGRES_BIND_HOST=127.0.0.1` y `REDIS_BIND_HOST=127.0.0.1`.
-- Abre en firewall solo el puerto del frontend del ambiente objetivo.
-- El deploy crea la red compartida si no existe.
-- Para cutover al backend separado, define `FRONTEND_API_UPSTREAM=osemosys-backend-api:8000`.
-- Usa la red Docker compartida `osemosys_api_bridge` para que el frontend alcance el backend nuevo sin exponerlo públicamente.
+Por defecto solo el `frontend` debe quedar expuesto. Usa `API_BIND_HOST=127.0.0.1`, `POSTGRES_BIND_HOST=127.0.0.1` y `REDIS_BIND_HOST=127.0.0.1`, y abre en el firewall solo el puerto del frontend del ambiente objetivo. El deploy crea la red compartida si no existe. Para el cambio al backend separado, define `FRONTEND_API_UPSTREAM=osemosys-backend-api:8000` y usa la red Docker compartida `osemosys_api_bridge`, para que el frontend alcance el backend nuevo sin exponerlo públicamente.
 
 ## Despliegue local/manual
 
@@ -88,11 +81,8 @@ SECRET_KEY="$(openssl rand -hex 32)" APP_PASSWORD='Cambio123!' ./scripts/deploy-
 
 ## Workers del API
 
-- `API_WORKERS=3` deja el API con 3 procesos `uvicorn` por defecto.
-- Sube ese valor si necesitas más concurrencia; no acelera mucho una sola importación pesada.
-- Para priorizar tiempo por simulación sobre throughput total, usa `SIM_WORKER_REPLICAS=1`, `SIM_MAX_CONCURRENCY=1`, `SIM_SOLVER_THREADS=12` y `OMP/OPENBLAS/MKL=4`.
+`API_WORKERS=3` deja la API con 3 procesos `uvicorn` por defecto. Sube ese valor si necesitas más concurrencia, aunque no acelera mucho una sola importación pesada. Para priorizar tiempo por simulación sobre throughput total, usa `SIM_WORKER_REPLICAS=1`, `SIM_MAX_CONCURRENCY=1`, `SIM_SOLVER_THREADS=12` y `OMP/OPENBLAS/MKL=4`.
 
 ## Referencias relacionadas
 
-- [Despliegue](deployment.md) para el procedimiento manual completo de puesta en marcha del stack.
-- [Runbook](runbook.md) para diagnóstico post-despliegue.
+Revisa [Despliegue](deployment.md) para el procedimiento manual completo de puesta en marcha del stack, y [Runbook](runbook.md) para el diagnóstico posterior al despliegue.

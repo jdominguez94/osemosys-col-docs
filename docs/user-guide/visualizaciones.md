@@ -8,20 +8,14 @@ Desde una simulación finalizada, entra a la página de resultados. Ahí encontr
 
 ## Elegir qué visualizar
 
-El selector de gráficas te permite elegir:
-
-- **Qué variable** graficar (producción, capacidad instalada, emisiones, demanda no cubierta, factor de planta, etc.), organizada por módulo/subsector.
-- **La unidad** de medida (por ejemplo, PJ, GW, MW, TWh, según la variable).
-- **La agrupación** de las series: por tecnología, por combustible, por sector, por grupo de transporte o por región (esta última solo disponible en escenarios simulados en modo regional).
-- Para escenarios regionales, un filtro adicional por **región** del Sistema Interconectado Nacional.
-- Cuando el resultado tiene más de un timeslice, un selector de **timeslice** específico (por defecto se muestra la agregación anual).
+El selector de gráficas te permite elegir **qué variable** graficar (producción, capacidad instalada, emisiones, demanda no cubierta, factor de planta, etc.), organizada por módulo o subsector; **la unidad** de medida (por ejemplo, PJ, GW, MW, TWh, según la variable); **la agrupación** de las series, ya sea por tecnología, por combustible, por sector, por grupo de transporte o por región (esta última solo disponible en escenarios simulados en modo regional); y, para escenarios regionales, un filtro adicional por **región** del Sistema Interconectado Nacional. Cuando el resultado tiene más de un timeslice, también aparece un selector de **timeslice** específico (por defecto se muestra la agregación anual).
 
 !!! tip "No todas las gráficas admiten todas las opciones"
-    Algunas gráficas tienen la agrupación o la unidad fijas (por ejemplo, las de emisiones de contaminantes usan una unidad fija; las de factor de planta se muestran siempre en porcentaje y sin selector de agrupación). Esto es intencional — la aplicación oculta las opciones que no aplican a esa gráfica en particular.
+    Algunas gráficas tienen la agrupación o la unidad fijas (por ejemplo, las de emisiones de contaminantes usan una unidad fija; las de factor de planta se muestran siempre en porcentaje y sin selector de agrupación). Esto es intencional. La aplicación oculta las opciones que no aplican a esa gráfica en particular.
 
 ## Tipos de vista
 
-Cada gráfica puede mostrarse en distintos modos de visualización:
+Cada gráfica puede mostrarse en distintos modos de visualización.
 
 | Vista | Descripción |
 |-------|-------------|
@@ -33,25 +27,25 @@ Cada gráfica puede mostrarse en distintos modos de visualización:
 
 ## Comparación entre escenarios
 
-Además de ver un escenario a la vez, puedes comparar hasta **10 escenarios simultáneamente**. Existen cuatro modos de comparación:
+Además de ver un escenario a la vez, puedes comparar hasta **10 escenarios simultáneamente**. Existen cuatro modos de comparación.
 
 | Modo | Cómo se organiza |
 |------|--------------------|
 | **Facetas** (`facet`) | Una gráfica completa e independiente por cada escenario, una junto a otra. |
 | **Por año** (`by-year`, modo por defecto) | Un panel por año, con los escenarios como categorías dentro de cada panel. |
 | **Por año (alterno)** (`by-year-alt`) | Un panel por escenario, con los años seleccionados como categorías dentro de cada panel. |
-| **Líneas totales** (`line-total`) | Una sola línea por escenario, mostrando el total anual sin desglose por serie — útil para comparar magnitudes agregadas de un vistazo. |
+| **Líneas totales** (`line-total`) | Una sola línea por escenario, mostrando el total anual sin desglose por serie, útil para comparar magnitudes agregadas de un vistazo. |
 
 !!! tip "Elige el modo según la pregunta que quieras responder"
     Si quieres ver cómo se compone cada escenario internamente, usa facetas o "por año". Si solo te interesa comparar una magnitud total entre escenarios (por ejemplo, costo total o emisiones totales), "líneas totales" suele ser más claro.
 
 ## Series sintéticas (superposiciones manuales)
 
-En las vistas de línea y área puedes agregar **series sintéticas**: datos manuales que se superponen a la gráfica, útiles para comparar contra una referencia externa (por ejemplo, series históricas o proyecciones de otra fuente). Cada serie sintética admite nombre, color, estilo de línea, marcador y tipo de trazo (línea, área o columna), y puede activarse/desactivarse individualmente. También se puede pegar un rango de datos copiado desde Excel (un valor, una fila, una columna o una matriz de dos columnas año-valor). Estas series se guardan en tu navegador, asociadas a la combinación específica de gráfica, unidad, filtros y vista.
+En las vistas de línea y área puedes agregar **series sintéticas**: datos manuales que se superponen a la gráfica, útiles para comparar contra una referencia externa (por ejemplo, series históricas o proyecciones de otra fuente). Cada serie sintética admite nombre, color, estilo de línea, marcador y tipo de trazo (línea, área o columna), y puede activarse o desactivarse individualmente. También se puede pegar un rango de datos copiado desde Excel (un valor, una fila, una columna o una matriz de dos columnas, año y valor). Estas series se guardan en tu navegador, asociadas a la combinación específica de gráfica, unidad, filtros y vista.
 
 ## Personalizar nombres y colores de series
 
-Las series de cada gráfica (tecnologías, combustibles, sectores, etc.) tienen un nombre y un color por defecto definidos internamente. Si tienes permisos de administración de reportes, puedes sobreescribir esos valores — y también ocultar series o reordenarlas — desde la interfaz, y el cambio aplica globalmente para todos los usuarios que vean esa gráfica.
+Las series de cada gráfica (tecnologías, combustibles, sectores, etc.) tienen un nombre y un color por defecto definidos internamente. Si tienes permisos de administración de reportes, puedes sobreescribir esos valores, y también ocultar series o reordenarlas, desde la interfaz, y el cambio aplica globalmente para todos los usuarios que vean esa gráfica.
 
 !!! note "Permisos requeridos"
     Esta funcionalidad requiere el permiso de administrador de reportes (o de gestión de escenarios). El usuario semilla `seed` creado por `scripts/seed.py` cuenta con este permiso en un entorno local recién instalado.
@@ -63,7 +57,7 @@ Las series de cada gráfica (tecnologías, combustibles, sectores, etc.) tienen 
 3. Selecciona la agrupación correspondiente (por tecnología, por combustible, etc.).
 4. Si es la primera vez que configuras esa combinación, usa la opción de **poblar desde catálogo** para generar automáticamente una fila por cada serie disponible, con sus valores por defecto.
 
-Por cada serie podrás:
+Por cada serie podrás hacer lo siguiente.
 
 | Acción | Efecto |
 |--------|--------|
@@ -79,11 +73,11 @@ Por cada serie podrás:
 
 ### Desde la página de resultados (por gráfica específica)
 
-Si estás viendo una gráfica concreta y tienes permisos de administrador, puedes ajustar sus series sin salir de la página de resultados: busca la opción de **configurar series** en la barra de controles de la gráfica (no disponible en la vista de tabla). Se abrirá un panel ya preconfigurado con el tipo y la agrupación de la gráfica actual; al guardar, la gráfica se actualiza automáticamente con los cambios.
+Si estás viendo una gráfica concreta y tienes permisos de administrador, puedes ajustar sus series sin salir de la página de resultados. Busca la opción de **configurar series** en la barra de controles de la gráfica (no disponible en la vista de tabla). Se abrirá un panel ya preconfigurado con el tipo y la agrupación de la gráfica actual; al guardar, la gráfica se actualiza automáticamente con los cambios.
 
 ### Agregar una serie que no aparece poblada
 
-Si una serie existe en los datos de la simulación pero no fue incluida al poblar desde el catálogo, puedes añadirla manualmente escribiendo su código exacto (tal como aparece en los datos) en el campo correspondiente — la interfaz sugiere coincidencias mientras escribes. El código debe coincidir exactamente con el identificador interno de la serie; si no aparece en las sugerencias, puedes obtenerlo del explorador de datos de resultados o de una exportación en CSV.
+Si una serie existe en los datos de la simulación pero no fue incluida al poblar desde el catálogo, puedes añadirla manualmente escribiendo su código exacto (tal como aparece en los datos) en el campo correspondiente. La interfaz sugiere coincidencias mientras escribes. El código debe coincidir exactamente con el identificador interno de la serie; si no aparece en las sugerencias, puedes obtenerlo del explorador de datos de resultados o de una exportación en CSV.
 
 ## Plantillas de gráficas guardadas
 
@@ -116,5 +110,4 @@ Para quienes necesitan revisar los datos crudos de una simulación (no solo las 
 
 ## Siguientes pasos
 
-- [Simulaciones](simulaciones.md) para entender el ciclo de vida del job cuyo resultado estás visualizando.
-- [Arquitectura](../architecture/overview.md) para el detalle técnico del motor de gráficas (`chart_service`, catálogos de configuración, etc.).
+Revisa [Simulaciones](simulaciones.md) para entender el ciclo de vida del job cuyo resultado estás visualizando, o [Arquitectura](../architecture/overview.md) para el detalle técnico del motor de gráficas (`chart_service`, catálogos de configuración, etc.).
