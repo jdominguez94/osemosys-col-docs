@@ -148,13 +148,6 @@ Los resultados de la planeación de largo plazo quedan disponibles de dos formas
 
     <!-- ![Descargar CSV](../assets/screenshots/first-simulation/06-download-csv.png) -->
 
-## Resumen del flujo
-
-```text
-[Excel ClicSAND (.xlsx) o ZIP de CSVs (otoole)] → Crear escenario → Iniciar sesión → Lanzar simulación
-→ Monitorear job → Abrir resultados → Visualizar y comparar → Descargar CSV / consultar en PostgreSQL
-```
-
 ## Siguientes pasos
 
 Para entender el flujo completo de la aplicación, revisa la [Visión general de la Guía de Usuario](../user-guide/overview.md). Para profundizar en la gestión de escenarios, ve a [Escenarios y catálogos](../user-guide/escenarios.md). Para el detalle de la carga vía ClicSAND, consulta [Carga de datos Excel/SAND](../user-guide/carga-excel-sand.md). Y para el detalle del ciclo de vida de un job, revisa [Simulaciones](../user-guide/simulaciones.md).
