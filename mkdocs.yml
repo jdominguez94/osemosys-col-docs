@@ -9,6 +9,9 @@ theme:
   language: es
   logo: assets/upme-logo.jpg
   favicon: assets/upme-logo.jpg
+  icon:
+    admonition:
+      tip: material/information-outline
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -66,7 +69,8 @@ plugins:
 nav:
   - Home: index.md
   - Getting Started:
-      - ¿Qué es OSeMOSYS Colombia?: getting-started/que-es-osemosys.md
+      - ¿Qué es esta plataforma?: getting-started/plataforma.md
+      - ¿Qué es OSeMOSYS?: getting-started/que-es-osemosys.md
       - Instalación: getting-started/installation.md
       - Primera simulación: getting-started/first-simulation.md
       - Variables de entorno: getting-started/environment-variables.md

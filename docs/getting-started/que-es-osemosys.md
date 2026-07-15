@@ -1,10 +1,11 @@
-# ¿Qué es OSeMOSYS Colombia?
+# ¿Qué es OSeMOSYS?
 
-Antes de instalar nada, vale la pena entender qué hace esta aplicación y de dónde viene el modelo que corre por debajo. Esta página es la introducción conceptual, la primera parada antes de [Instalación](installation.md).
+La página anterior explicó [qué es esta plataforma](plataforma.md). Esta explica el modelo que corre por debajo, OSeMOSYS, la metodología de optimización energética en la que se apoya toda la aplicación.
 
-OSeMOSYS Colombia es una plataforma web de planeación energética de largo plazo. Toma un modelo del sistema energético colombiano construido sobre OSeMOSYS (un framework de optimización energética open source) y lo pone al alcance de analistas y planificadores a través de una interfaz web, sin que tengan que escribir código ni operar un solver directamente.
+OSeMOSYS (Open Source Energy Modelling System) es un framework abierto de optimización energética, pensado para construir modelos de largo plazo de sistemas energéticos completos. Nació como una alternativa de código abierto a otras herramientas de planeación energética y hoy lo mantiene una comunidad internacional de practicantes e instituciones. La documentación oficial vive en [osemosys.readthedocs.io](https://osemosys.readthedocs.io/) y el código fuente en [github.com/OSeMOSYS](https://github.com/OSeMOSYS).
 
-Con ella puedes crear escenarios (distintos supuestos de demanda, tecnología, costos y política), lanzar simulaciones que resuelven un problema de optimización, y explorar los resultados con gráficas interactivas.
+!!! note "Un modelo aplicado, no el framework genérico"
+    Esta página explica los conceptos de OSeMOSYS tal como se usan en el modelo colombiano de esta plataforma. Para la formulación matemática canónica y la documentación exhaustiva del framework, la referencia es la documentación oficial enlazada arriba.
 
 Todo modelo de OSeMOSYS, incluido este, representa el sistema energético como una red de **commodities** (combustibles, electricidad, cualquier flujo de energía) y **tecnologías** (procesos que transforman un commodity en otro). A esta red se le llama el **Sistema de Referencia Energético**, o RES por sus siglas en inglés (Reference Energy System).
 
@@ -24,4 +25,8 @@ El ejemplo del diagrama sigue la ruta más común del sistema eléctrico colombi
 
 ## Por qué importa entender esto antes de desplegar o correr simulaciones?
 
-Toda la interfaz de la aplicación (escenarios, catálogos, resultados) gira alrededor de estos mismos conceptos, commodities y tecnologías. Cuando más adelante veas nombres como `PWRNGS_CC` (una central de ciclo combinado a gas) o `DEMTRAELCLDV` (demanda de transporte, vehículos livianos eléctricos), ya sabrás que son piezas de este mismo tipo de red, algo que produce o consume un commodity, en algún punto de la cadena entre el recurso primario y el usuario final.
+Toda la interfaz de la aplicación (escenarios, catálogos, resultados) gira alrededor de estos mismos conceptos, commodities y tecnologías. Nombres como `PWRNGS_CC` (una central de ciclo combinado a gas) o `DEMTRAELCLDV` (demanda de transporte, vehículos livianos eléctricos) son piezas de ese mismo tipo de red, algo que produce o consume un commodity en algún punto de la cadena entre el recurso primario y el usuario final.
+
+## Siguientes pasos
+
+Sigue con [Instalación](installation.md) para levantar el stack, y luego con [Primera simulación](first-simulation.md) para ver el flujo completo en la interfaz.

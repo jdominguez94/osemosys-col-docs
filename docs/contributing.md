@@ -25,22 +25,24 @@ npm run lint        # eslint
 !!! tip "Antes de proponer un cambio"
     Corre `pytest` en el backend y `npm run typecheck` más `npm run lint` en el frontend antes de abrir un cambio. Son las mismas verificaciones que se esperan en revisión.
 
-## Editar y previsualizar este sitio de documentación
+## Flujo de contribución (ramas y Pull Requests)
 
-Este sitio de documentación es un proyecto **independiente** del repositorio de la aplicación (vive en su propio directorio, separado del código de OSeMOSYS Colombia). Está construido con [MkDocs](https://www.mkdocs.org/) y el tema [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), y también está dockerizado para facilitar su edición.
+Los cambios a la aplicación se proponen mediante ramas de feature y Pull Requests, no con push directo a `main` ni a `dev`.
 
-Desde la raíz de este proyecto de documentación.
+1. Crea una rama nueva a partir de `main`, con un nombre que describa el cambio, por ejemplo `feature/nombre-del-cambio` o `fix/nombre-del-bug`.
+2. Haz los cambios y corre las pruebas correspondientes, `pytest` en el backend y `npm run typecheck` más `npm run lint` en el frontend, como se describió arriba.
+3. Sube la rama y abre un Pull Request contra la rama `dev` del repositorio [UPME-SubDemanda/Osemosys_UPME](https://github.com/UPME-SubDemanda/Osemosys_UPME).
+4. Describe el cambio y su motivación en el PR, y espera la revisión y el resultado de CI antes de fusionar.
 
-```bash
-docker compose up
+```mermaid
+gitGraph
+    commit id: "main estable"
+    branch dev
+    checkout main
+    branch feature/nombre-del-cambio
+    commit id: "cambio A"
+    commit id: "cambio B"
+    checkout dev
+    merge feature/nombre-del-cambio id: "Pull Request"
+    checkout main
 ```
-
-Esto levanta un contenedor que ejecuta `mkdocs serve` internamente y sirve el sitio con recarga en caliente. Los cambios en los archivos `.md` se reflejan automáticamente en el navegador sin reiniciar el contenedor. El sitio queda disponible en [http://localhost:8001](http://localhost:8001).
-
-### Estructura del sitio
-
-El contenido vive en `docs/` (Markdown), organizado en las secciones que define la navegación (`nav`) de `mkdocs.yml` (Getting Started, Guía de Usuario, Arquitectura y Referencia, Operación, Ejemplos). Las extensiones de Markdown habilitadas incluyen admonitions (`!!! tip`, `!!! note`), pestañas, bloques de código con resaltado y tarjetas en grilla (`grid cards`) para páginas tipo landing como la portada. Al agregar una página nueva, hay que registrarla en la sección `nav` de `mkdocs.yml` para que aparezca en el menú de navegación.
-
-## Siguientes pasos
-
-Para continuar, revisa [Instalación](getting-started/installation.md), que tiene el detalle completo de puesta en marcha de la aplicación, y [Arquitectura](architecture/overview.md), que da el contexto técnico completo antes de contribuir cambios de fondo.

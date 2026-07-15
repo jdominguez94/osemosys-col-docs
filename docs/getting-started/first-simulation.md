@@ -65,10 +65,7 @@ sequenceDiagram
 
 Abre el frontend en tu navegador ([http://localhost:8080](http://localhost:8080) si usas el stack Docker por defecto) e inicia sesión con el usuario `seed` y la contraseña `seed123`.
 
-!!! example "📸 Captura pendiente"
-    Pantalla de inicio de sesión.
-
-    <!-- ![Inicio de sesión](../assets/screenshots/first-simulation/01-login.png) -->
+![Pantalla de inicio de sesión](../assets/screenshots/first-simulation/01-login.png)
 
 ## 2. Elegir o crear un escenario
 
