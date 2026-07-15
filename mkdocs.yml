@@ -88,4 +88,5 @@ nav:
       - Despliegue: operations/deployment.md
   - Ejemplos:
       - Archivos SAND: examples/sand-files.md
+      - Evolución de la matriz eléctrica: examples/matriz-electrica-escenarios.md
   - Contribuir: contributing.md
