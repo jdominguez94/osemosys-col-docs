@@ -2,6 +2,9 @@
 
 Este ejemplo compara los resultados de tres escenarios de largo plazo (2022 a 2055) para entender cómo cambia la matriz eléctrica colombiana según la política energética que se asuma.
 
+!!! note "¿Buscas la lógica matemática detrás de esto?"
+    Este ejemplo usa datos reales. Para ver, con un caso simplificado de dos tecnologías, cómo el modelo decide en qué invertir y cuánto cuesta una meta de política, ve a [Quickstart 2 — Expansión de capacidad](../getting-started/quickstart-2-expansion-capacidad.md) y [Quickstart 3 — Restricciones de política](../getting-started/quickstart-3-restricciones-politica.md).
+
 ## Resultados de planeacion : Oferta de electricidad
 
 ![Producción de electricidad por tecnología, comparación PD, PA y CN](../assets/screenshots/matriz-electrica/produccion-pd-pa-cn.png)
