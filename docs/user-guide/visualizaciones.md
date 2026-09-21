@@ -110,4 +110,4 @@ Para quienes necesitan revisar los datos crudos de una simulación (no solo las 
 
 ## Siguientes pasos
 
-Revisa [Simulaciones](simulaciones.md) para entender el ciclo de vida del job cuyo resultado estás visualizando, o [Arquitectura](../architecture/overview.md) para el detalle técnico del motor de gráficas (`chart_service`, catálogos de configuración, etc.).
+Revisa [Simulaciones](simulaciones.md) para entender el ciclo de vida del job cuyo resultado estás visualizando.

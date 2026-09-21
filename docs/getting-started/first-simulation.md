@@ -5,62 +5,6 @@ Esta guía te lleva paso a paso desde iniciar sesión hasta ver y descargar los 
 !!! tip "Antes de empezar"
     Necesitas el usuario semilla creado por `scripts/seed.py`, usuario **`seed`** y contraseña **`seed123`**.
 
-!!! tip "Cómo agregar tus propias capturas de pantalla"
-    Cada paso de esta guía tiene un bloque **"📸 Captura pendiente"** con una línea de imagen comentada (`<!-- ![...](...) -->`). Guarda tus capturas en `docs/assets/screenshots/first-simulation/` con el nombre sugerido en cada bloque y descomenta esa línea. No necesitas tocar nada más.
-
-## Diagrama del proceso
-
-Toda simulación arranca con datos de entrada (un archivo Excel **ClicSAND** o un **ZIP de CSVs** OSeMOSYS, por ejemplo generado con `otoole`), pasa por el motor de optimización, y termina en dos salidas, resultados descargables en CSV y resultados persistidos en PostgreSQL.
-
-```mermaid
-sequenceDiagram
-    actor Analista as Analista/Planificador
-    participant Frontend as Frontend Web (localhost:8080)
-    participant API as API FastAPI
-    participant Worker as Worker Celery (Pyomo/Solver)
-    participant DB as PostgreSQL
-
-    Note over Analista,DB: Entrada de datos: Excel ClicSAND (.xlsx) o ZIP de CSVs (p. ej. generado con otoole)
-
-    alt Carga vía Excel ClicSAND (.xlsx)
-        Analista->>Frontend: Sube archivo ClicSAND (.xlsx)
-        Frontend->>API: POST /scenarios/import-excel
-    else Carga vía ZIP de CSVs (otoole)
-        Analista->>Frontend: Sube .zip con CSVs OSeMOSYS
-        Frontend->>API: POST /scenarios/import-csv
-    end
-
-    API->>DB: Crea escenario y parámetros (schema osemosys)
-    DB-->>API: Escenario creado
-    API-->>Frontend: Escenario listo para simular
-
-    Analista->>Frontend: Clic en "Simular"
-    Frontend->>API: POST /simulations
-    API->>DB: Crea simulation_job (QUEUED)
-    API->>Worker: Encola tarea (Redis/Celery)
-    API-->>Frontend: job_id (202 Accepted)
-
-    loop Monitoreo de estado
-        Frontend->>API: GET /simulations/{job_id}
-        API-->>Frontend: status = RUNNING...
-    end
-
-    Worker->>Worker: Pipeline: extraer datos, construir modelo Pyomo, resolver (HiGHS, Gurobi, CPLEX o Mosek)
-    Worker->>DB: Persiste resultados (osemosys_output_param_value) y evento final
-    Worker->>DB: simulation_job.status = SUCCEEDED
-
-    Frontend->>API: GET /simulations/{job_id}/result
-    API-->>Frontend: KPIs y series de la planeación de largo plazo
-
-    opt Descarga de resultados
-        Analista->>Frontend: Clic en "Descargar CSV"
-        Frontend->>API: GET /simulations/{job_id}/output-values/export
-        API-->>Analista: archivo .csv con la planeación de largo plazo
-    end
-
-    Note over DB: Los resultados quedan almacenados en PostgreSQL, disponibles para futuras consultas y comparaciones
-```
-
 ## 1. Iniciar sesión
 
 Abre el frontend en tu navegador ([http://localhost:8080](http://localhost:8080) si usas el stack Docker por defecto) e inicia sesión con el usuario `seed` y la contraseña `seed123`.
@@ -125,7 +69,7 @@ Desde el ícono de registros (🔍) puedes ver el paso a paso detallado de la ej
 
 ![Registros detallados de la ejecución](../assets/screenshots/first-simulation/04-job-status-2.png)
 
-## 5. Abrir los resultados
+<!-- ## 5. Abrir los resultados
 
 Cuando el job termina exitosamente, ábrelo desde la lista de simulaciones para entrar a la página de resultados. Ahí encontrarás la **planeación de largo plazo** resultante de la simulación, con un resumen de indicadores clave del escenario resuelto, el selector de gráficas (donde puedes elegir qué variable visualizar, como producción, capacidad o emisiones, y cómo agruparla) y distintos tipos de vista, entre ellos barras apiladas, líneas, área, Pareto o tabla.
 
@@ -134,17 +78,17 @@ Cuando el job termina exitosamente, ábrelo desde la lista de simulaciones para 
 
     <!-- ![Resultados](../assets/screenshots/first-simulation/05-results.png) -->
 
-Para explorar todas las posibilidades de personalización de gráficas (tipos de vista, comparación entre escenarios, series, plantillas guardadas y exportación), continúa con [Visualizaciones y reportes](../user-guide/visualizaciones.md).
-
-## 6. Descargar los resultados (o consultarlos después)
+<!-- Para explorar todas las posibilidades de personalización de gráficas (tipos de vista, comparación entre escenarios, series, plantillas guardadas y exportación), continúa con [Visualizaciones y reportes](../user-guide/visualizaciones.md). -->
+<!--  -->
+<!-- ## 6. Descargar los resultados (o consultarlos después)
 
 Los resultados de la planeación de largo plazo quedan disponibles de dos formas simultáneas. La **descarga en CSV** te deja exportar, desde la página de resultados, los valores de salida (`GET /simulations/{job_id}/output-values/export`) o una gráfica puntual en CSV, Excel, PNG o SVG. La **persistencia en PostgreSQL** guarda todos los resultados en la base de datos del stack (tabla `osemosys_output_param_value`, entre otras), así que puedes volver a consultarlos, compararlos con otros escenarios o generar reportes más adelante sin tener que repetir la simulación.
 
 !!! example "📸 Captura pendiente"
     Botón de descarga de resultados en CSV.
 
-    <!-- ![Descargar CSV](../assets/screenshots/first-simulation/06-download-csv.png) -->
-
+    ![Descargar CSV](../assets/screenshots/first-simulation/06-download-csv.png) -->
+ -->
 ## Siguientes pasos
 
 Para entender el flujo completo de la aplicación, revisa la [Visión general de la Guía de Usuario](../user-guide/overview.md). Para profundizar en la gestión de escenarios, ve a [Escenarios y catálogos](../user-guide/escenarios.md). Para el detalle de la carga vía ClicSAND, consulta [Carga de datos Excel/SAND](../user-guide/carga-excel-sand.md). Y para el detalle del ciclo de vida de un job, revisa [Simulaciones](../user-guide/simulaciones.md).

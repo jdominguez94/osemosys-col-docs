@@ -6,10 +6,8 @@ Este es un proyecto **independiente** del repositorio de la aplicación ([UPME-S
 
 ## Contenido
 
-- **Getting Started** — instalación (con `task`, Docker Compose o modo local) y primera simulación.
+- **Getting Started** — qué es la plataforma y OSeMOSYS, requisitos y solvers, instalación (con `task`, Docker Compose o modo local) y primera simulación.
 - **Guía de Usuario** — escenarios, simulaciones, visualizaciones y carga de datos Excel/SAND.
-- **Arquitectura y Referencia** — vistas C4 (contexto, contenedores, componentes), motor de simulación, frontend y backend.
-- **Operación** — runbook, CI/CD, despliegue.
 - **Ejemplos** — archivos SAND de referencia.
 
 ## Editar y previsualizar este sitio
