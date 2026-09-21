@@ -15,28 +15,11 @@ Internamente, cada simulación plantea un problema de optimización lineal (mini
 
 Ambos modos alimentan el mismo motor de simulación y producen resultados visualizables de la misma manera. Ver [Escenarios y catálogos](escenarios.md) y [Carga de datos Excel/SAND](carga-excel-sand.md) respectivamente.
 
-```mermaid
-flowchart LR
-    subgraph M1["Modo DB (principal)"]
-        A["Crear o editar escenario"] --> B[("PostgreSQL")]
-    end
-    subgraph M2["Modo Excel / SAND (standalone)"]
-        C["Subir archivo SAND (.xlsx)"] --> D["Sin base de datos"]
-    end
-    B --> E["Motor de simulación"]
-    D --> E
-    E --> F["Resultados, gráficas, comparación, reportes"]
-```
+![Dos modos de trabajo: modo DB (principal) y modo Excel/SAND (standalone), ambos alimentando el mismo motor de simulación](../assets/diagrams/overview-dos-modos.svg)
 
 ## Flujo general de trabajo
 
-```text
-1. Crear o elegir un escenario         →  datos de entrada del sistema energético
-2. Simular                             →  el modelo se resuelve en segundo plano
-3. Visualizar                          →  explorar resultados con gráficas y tablas
-4. Comparar (opcional)                 →  contrastar varios escenarios entre sí
-5. Reportar (opcional)                 →  guardar gráficas y ensamblar reportes exportables
-```
+![Flujo general: crear o elegir escenario, simular, visualizar, comparar (opcional), reportar (opcional)](../assets/diagrams/overview-flujo-trabajo.svg)
 
 **Crear escenario.** Define los supuestos del sistema energético que quieres estudiar. Ver [Escenarios y catálogos](escenarios.md).
 
@@ -57,5 +40,3 @@ El **explorador de datos de resultados** es una vista de tabla de formato ancho 
 ## Primeros pasos
 
 Si aún no has ejecutado tu primera simulación, sigue el tutorial [Primera simulación](../getting-started/first-simulation.md).
-
-Para detalle técnico/arquitectónico de cómo está construida la aplicación (no necesario para el uso diario), ver [Arquitectura](../architecture/overview.md).
