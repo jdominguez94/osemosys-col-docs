@@ -1,35 +1,35 @@
 # OSeMOSYS Colombia
 
-Documentación del modelo energético colombiano construido sobre OSeMOSYS.
+**OSeMOSYS Colombia** es la plataforma web de planeación energética de largo plazo de la UPME, construida sobre [OSeMOSYS](https://osemosys.readthedocs.io/), un framework de optimización de código abierto usado por instituciones de planeación energética en todo el mundo.
 
 <div class="grid cards" markdown>
+
+-   :material-format-list-checks:{ .lg .middle } **Funcionalidades**
+
+    ---
+    Qué puede hacer la plataforma, en un vistazo: capacidades generales, de optimización y de análisis.
+
+    [:octicons-arrow-right-24: Ver funcionalidades](features.md)
 
 -   :material-rocket-launch:{ .lg .middle } **Getting Started**
 
     ---
-    Instala el stack con Docker o en modo local y ejecuta tu primera simulación.
+    Instala el stack, corre los quickstarts y tu primera simulación.
 
     [:octicons-arrow-right-24: Comenzar](getting-started/installation.md)
 
--   :material-book-open-variant:{ .lg .middle } **Guía de Usuario**
+-   :material-book-open-variant:{ .lg .middle } **Referencia**
 
     ---
-    Escenarios, simulaciones, visualizaciones y restricciones definidas por el usuario.
+    Escenarios, simulaciones, visualizaciones, carga de datos y restricciones definidas por el usuario.
 
-    [:octicons-arrow-right-24: Ir a la guía](user-guide/overview.md)
+    [:octicons-arrow-right-24: Ir a la referencia](user-guide/overview.md)
 
--   :material-sitemap:{ .lg .middle } **Arquitectura y Referencia**
-
-    ---
-    Vistas C4 y motor de simulación OSeMOSYS.
-
-    [:octicons-arrow-right-24: Explorar](architecture/overview.md)
-
--   :material-cog:{ .lg .middle } **Operación**
+-   :material-lifebuoy:{ .lg .middle } **Soporte**
 
     ---
-    Runbook, monitoreo, CI/CD y despliegue.
+    Diagnóstico de errores de simulación, dónde reportar problemas y preguntas frecuentes.
 
-    [:octicons-arrow-right-24: Ver operación](operations/runbook.md)
+    [:octicons-arrow-right-24: Ir a soporte](support.md)
 
 </div>
