@@ -10,7 +10,7 @@ $$
 0.9 \times 80 + 0.4 \times 20 = 72 + 8 = 80 \text{ t CO}_2
 $$
 
-## Imponer la meta
+## Restricción de emisiones (`AnnualEmissionLimit`)
 
 Una restricción de política no le dice al modelo qué tecnología usar — le agrega una condición más que la solución tiene que cumplir, además del balance de demanda:
 
@@ -43,6 +43,6 @@ Esa diferencia frente al despacho sin restricción es, literalmente, "el costo d
 !!! note "Cuando la política y el costo apuntan en la misma dirección"
     En el [Quickstart 2](quickstart-2-expansion-capacidad.md), `PWRGAS` ya era la opción más barata para expandir capacidad, y aquí además resulta ser la tecnología que ayuda a cumplir la meta de emisiones. Cuando el costo y la política coinciden, la decisión es sencilla. El caso interesante — y el que realmente pone a prueba al modelo — es cuando compiten entre sí: una tecnología más barata pero más contaminante contra una más cara pero más limpia. Ese es exactamente el tipo de trade-off que resolvió este ejercicio.
 
-## De aquí a la aplicación real
+## Relación con la aplicación real
 
-Estos tres quickstarts usan dos tecnologías, un timeslice y cuatro años para que cada cuenta sea verificable a mano. La aplicación real resuelve el mismo tipo de problema — despacho, expansión de capacidad, descuento y restricciones de política — con cientos de tecnologías, más de 30 años de horizonte y varias restricciones a la vez. La lógica de fondo es la misma; ya no se puede verificar a mano, pero ahora sabes qué está pasando por debajo. Para verlo funcionando en la interfaz con datos reales, sigue con [Primera simulación](first-simulation.md).
+Estos tres quickstarts usan dos tecnologías, un timeslice y cuatro años para que cada cuenta sea verificable a mano. La aplicación real resuelve el mismo tipo de problema — despacho, expansión de capacidad, descuento y restricciones de política — con cientos de tecnologías, más de 30 años de horizonte y varias restricciones a la vez. La lógica de fondo es la misma; ya no se puede verificar a mano, pero ahora sabes qué está pasando por debajo. Para verlo funcionando en la interfaz con datos reales, sigue con [Primera simulación](../examples/first-simulation.md).

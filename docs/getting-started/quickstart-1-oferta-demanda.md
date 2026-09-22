@@ -5,7 +5,7 @@ Primero de tres recorridos matemáticos, con un sistema mucho más simple que el
 !!! warning "Cifras ilustrativas"
     Este sistema y sus números son inventados para que la aritmética sea simple. No son datos del sistema colombiano — para eso, ver los [archivos SAND de referencia](../examples/sand-files.md).
 
-## El sistema
+## Caso básico de ejemplo
 
 - Región: `R1`.
 - Combustibles primarios, 100% importados (como en Atlantis): `CARBON`, `GAS`.
@@ -35,7 +35,7 @@ Demanda = 100. Ambas tecnologías ya existen, así que no hace falta invertir to
 
 ![Curva de orden de mérito: PWRCOAL cubre hasta 80 unidades, PWRGAS cubre el resto hasta la demanda de 100](../assets/diagrams/quickstart-1-despacho-economico.svg)
 
-## Qué significa "minimizar el costo descontado"
+## Función objetivo: costo descontado total
 
 OSeMOSYS no minimiza el costo de un año aislado. Minimiza la suma de los costos de **todos** los años del horizonte, pero **descontados**: un costo dentro de 10 años pesa menos en la suma que el mismo costo el año próximo, porque un dólar hoy vale más que un dólar futuro (es la misma lógica de una tasa de interés, aplicada al revés).
 
