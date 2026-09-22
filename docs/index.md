@@ -14,7 +14,7 @@
 -   :material-rocket-launch:{ .lg .middle } **Getting Started**
 
     ---
-    Instala el stack, corre los quickstarts y tu primera simulación.
+    Instalación del stack, quickstarts y primera simulación.
 
     [:octicons-arrow-right-24: Comenzar](getting-started/installation.md)
 

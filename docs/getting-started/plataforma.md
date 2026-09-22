@@ -14,4 +14,4 @@ Todo esto se empaqueta con Docker, así que el stack completo (base de datos, co
 
 ## Siguientes pasos
 
-Sigue con [¿Qué es OSeMOSYS?](que-es-osemosys.md) para entender el modelo, con [Requisitos y solvers](requisitos.md) para saber qué necesitas según tu perfil, y luego con [Instalación](installation.md) para levantar el stack completo.
+Ver [¿Qué es OSeMOSYS?](que-es-osemosys.md) para entender el modelo, [Requisitos y solvers](requisitos.md) para lo necesario según el perfil, y luego [Instalación](installation.md) para levantar el stack completo.
