@@ -7,16 +7,24 @@ Vista compilada de lo que ofrece OSeMOSYS Colombia, pensada para quien está eva
 
 ## Generales
 
+![Colaboración y versionado de escenarios sobre una base de datos compartida, y alcance nacional o regional con el mismo motor](assets/diagrams/features-generales.svg)
+
+Las 7 regiones en las que se desagrega el Sistema Interconectado Nacional en modo regional:
+
+![Regiones del modelo: Insular, Caribe, Antioquia, Nordeste, Oriente, Suroccidente y Este](assets/Mapa.png)
+
 - **Colaborativo**: base de datos compartida (PostgreSQL), escenarios versionables, hasta 10 comparables a la vez. Ver [Escenarios y catálogos](user-guide/escenarios.md).
 - **Dos modos de entrada**: escenarios gestionados en base de datos, o simulación directa desde un archivo Excel/SAND sin pasar por la base de datos. Ver [Carga de datos Excel/SAND](user-guide/carga-excel-sand.md).
-- **Nacional o regional**: simulaciones a nivel nacional agregado o desagregadas por región/departamento. Ver [Escenarios y catálogos](user-guide/escenarios.md).
+- **Nacional o regional**: simulaciones a nivel nacional agregado o desagregadas en las 7 regiones del Sistema Interconectado Nacional. Ver [Escenarios y catálogos](user-guide/escenarios.md).
 - **Diagnóstico de infactibilidad**: identificación automática de restricciones en conflicto, con análisis detallado bajo demanda. Ver [Resultados infactibles](user-guide/simulaciones.md#resultados-infactibles).
 - **Visualización de resultados**: 5 tipos de vista, 4 modos de comparación multiescenario, series sintéticas, plantillas y reportes exportables. Ver [Visualizaciones y reportes](user-guide/visualizaciones.md).
 - **Explorador de datos**: tabla de resultados filtrable por 8 dimensiones, con exportación a Excel. Ver [Explorador de datos de resultados](user-guide/visualizaciones.md#explorador-de-datos-de-resultados).
 
 ## Optimización
 
-Cada punto tiene un ejemplo matemático simple (dos tecnologías, con la formulación real de OSeMOSYS incluido el costo descontado, aritmética verificable a mano) en los tres quickstarts.
+En el fondo, cada simulación es un único problema de optimización: minimizar el costo descontado total sujeto a las restricciones que se listan abajo. Cada una tiene un ejemplo matemático simple (dos tecnologías, con la formulación real de OSeMOSYS, aritmética verificable a mano) en los tres quickstarts.
+
+![El problema de optimización: minimizar el costo descontado total sujeto a balance oferta-demanda, límites de capacidad, límite de emisiones y balance de almacenamiento, resuelto con el solver configurado](assets/diagrams/features-optimizacion.svg)
 
 - **Despacho económico (ED)**: para cada timeslice, el modelo decide qué tecnologías producen para cubrir la demanda al menor costo total. Ejemplo: [Quickstart 1 — Despacho económico](getting-started/quickstart-1-oferta-demanda.md).
 - **Planeación de expansión de capacidad (CEP)** y **planeación de trayectoria multianual (Pathway Planning)**: el modelo decide en qué tecnología invertir, cuándo, y cómo se contabiliza esa inversión (incluido el valor de salvamento) dentro de un horizonte de varios años. Ejemplo: [Quickstart 2 — Expansión de capacidad](getting-started/quickstart-2-expansion-capacidad.md). En la interfaz, con datos reales: [Evolución de la matriz eléctrica](examples/matriz-electrica-escenarios.md).
@@ -25,9 +33,11 @@ Cada punto tiene un ejemplo matemático simple (dos tecnologías, con la formula
 - **Flexibilidad de solver**: HiGHS por defecto (sin costo de licencia) o Gurobi/CPLEX/Mosek, como decisión de configuración, no una reescritura del modelo. Ver [Requisitos y solvers](getting-started/requisitos.md).
 
 !!! question "Por confirmar con el equipo de desarrollo"
-    El motor implementa además bloques de **margen de reserva**, **meta de energía renovable (RE target)** y **restricciones definidas por el usuario (UDC / Custom Constraints)**. No confirmamos si un analista puede configurarlos hoy desde la interfaz o si por ahora son solo capacidad interna del motor de optimización.
+    El motor implementa además un bloque de **margen de reserva**. No confirmamos si un analista puede configurarlo hoy desde la interfaz o si por ahora es solo capacidad interna del motor de optimización.
 
 ## Análisis y usabilidad
+
+![De KPIs y gráficas a explorador de datos, plantillas y reportes exportables](assets/diagrams/features-usabilidad.svg)
 
 - **Indicadores clave (KPIs)**: resumen de indicadores al abrir cualquier resultado de simulación. Ver [Visión general](user-guide/overview.md).
 - **Visualizaciones**: el punto más fuerte de la plataforma — ver el bloque de [Generales](#generales) arriba.
@@ -40,10 +50,9 @@ Cada punto tiene un ejemplo matemático simple (dos tecnologías, con la formula
 
 ## Arquitectura y rendimiento
 
+![Capas API, servicio, repositorio y motor de optimización, con cola de trabajos para ejecución concurrente y solver intercambiable](assets/diagrams/features-arquitectura.svg)
+
 - **Separación por capas**: API, servicio, repositorio y motor de optimización como capas independientes — relevante para equipos técnicos que integren o extiendan la plataforma.
 - **Control de resolución**: timeslices colapsables a uno solo o discriminados, nacional vs. regional. Ver [Escenarios y catálogos](user-guide/escenarios.md).
 - **Motor y persistencia**: Pyomo con solvers intercambiables sobre una base de datos PostgreSQL compartida. Ver [¿Qué es esta plataforma?](getting-started/plataforma.md).
 - **Ejecución concurrente**: cola de trabajos (Celery + Redis) para correr varias simulaciones a la vez sin bloquearse entre sí, con guía de dimensionamiento de hardware según el tamaño del escenario. Ver [Requisitos y solvers](getting-started/requisitos.md).
-
-!!! question "Por confirmar"
-    No encontramos evidencia de una función de **agregación espacial** (reducir el tamaño del modelo agrupando regiones). El eje de escala real de esta plataforma es nacional agregado vs. regional por departamento, no un rango de "prototipo a continente" como en frameworks genéricos de propósito más amplio.
