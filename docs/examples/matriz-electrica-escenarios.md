@@ -2,6 +2,9 @@
 
 Este ejemplo compara los resultados de tres escenarios de largo plazo (2022 a 2055) para entender cómo cambia la matriz eléctrica colombiana según la política energética que se asuma.
 
+!!! info "Resultados oficiales del PEN"
+    Estos son los resultados oficiales de oferta, calculada de forma endógena por el modelo para el sector Electricidad — uno de los sectores del Plan Energético Nacional (PEN). Para el detalle completo de la conceptualización de estos escenarios, ver el [Tomo II del PEN 2025-2055](https://docs.upme.gov.co/DemandayEficiencia/Documents/PEN_2025_2055/PEN_Tomo_II-Conceptualizacion_de_escenarios_PEN_2025-2055_VF.pdf).
+
 !!! note "¿Buscas la lógica matemática detrás de esto?"
     Este ejemplo usa datos reales. Para ver, con un caso simplificado de dos tecnologías, cómo el modelo decide en qué invertir y cuánto cuesta una meta de política, ve a [Quickstart 2 — Expansión de capacidad](../getting-started/quickstart-2-expansion-capacidad.md) y [Quickstart 3 — Restricciones de política](../getting-started/quickstart-3-restricciones-politica.md).
 
@@ -19,15 +22,6 @@ Las tres gráficas comparten la misma escala (0 a 400 TWh), lo que permite ver d
 
 El patrón de capacidad instalada (en GW) confirma la misma historia, pero de forma más marcada todavía. PD llega a unos 48 GW instalados en 2055 y PA a unos 52 GW, mientras que CN se acerca a 95 GW, casi el doble. La capacidad crece más rápido que la energía producida en el escenario CN porque las renovables intermitentes (eólica y solar) necesitan más capacidad instalada por unidad de energía firme entregada que una planta térmica o hidroeléctrica despachable.
 
-## Cómo reproducir esta comparación en la aplicación
+## Cómo reproducir esta comparación
 
-1. Ten los tres escenarios ya simulados (en este ejemplo, `PD_base_results`, `PA_base_results` y `CN_base_results`).
-2. Ve a la sección **Resultados** del menú lateral. En la tabla de ejecuciones, marca la casilla de cada resultado que quieras comparar, hasta 10 a la vez. En este ejemplo se marcan `PD_base_results`, `PA_base_results` y `CN_base_results`.
-
-    ![Seleccionar resultados de simulación para comparar](../assets/screenshots/matriz-electrica/seleccionar-resultados-comparar.png)
-
-    Con dos o más resultados marcados, la aplicación habilita la comparativa de escenarios y arma las gráficas según el modo de vista que elijas después (facetas, por año o líneas totales).
-3. Usa el modo **Facetas**, que pone una gráfica completa por escenario, una junto a otra, como en las imágenes de arriba.
-4. Para la primera gráfica, elige la variable de producción (`ProductionByTechnology`) agrupada por **tecnología**. Para la segunda, elige capacidad (`TotalCapacityAnnual`), también agrupada por tecnología.
-
-Ver el detalle completo de modos de comparación y tipos de vista en [Visualizaciones y reportes](../user-guide/visualizaciones.md#comparacion-entre-escenarios).
+Con los tres escenarios ya simulados (`PD_base_results`, `PA_base_results` y `CN_base_results`), sigue el paso [Comparar resultados](first-simulation.md#5-comparar-resultados-opcional) del tutorial de Primera simulación: marca los tres en la sección **Resultados**, usa el modo **Facetas**, y grafica producción (`ProductionByTechnology`) y capacidad (`TotalCapacityAnnual`) agrupadas por **tecnología**, como en las imágenes de arriba.

@@ -84,7 +84,6 @@ nav:
           - Quickstart 1 — Despacho económico: getting-started/quickstart-1-oferta-demanda.md
           - Quickstart 2 — Expansión de capacidad: getting-started/quickstart-2-expansion-capacidad.md
           - Quickstart 3 — Restricciones de política: getting-started/quickstart-3-restricciones-politica.md
-          - Primera simulación: getting-started/first-simulation.md
       - Referencia:
           - Visión general: user-guide/overview.md
           - Escenarios y catálogos: user-guide/escenarios.md
@@ -93,6 +92,8 @@ nav:
           - Carga de datos Excel/SAND: user-guide/carga-excel-sand.md
       - Soporte: support.md
   - Ejemplos:
+      - examples/index.md
+      - Primera simulación: examples/first-simulation.md
       - Archivos SAND: examples/sand-files.md
       - Evolución de la matriz eléctrica: examples/matriz-electrica-escenarios.md
   - Contribuir: contributing.md

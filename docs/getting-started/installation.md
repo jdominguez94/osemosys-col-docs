@@ -1,13 +1,13 @@
 # Instalación
 
-Esta página explica cómo levantar OSeMOSYS Colombia por primera vez, ya sea para evaluar la aplicación o para empezar a desarrollar sobre ella. Hay tres caminos posibles. `task` (recomendado), el stack completo con Docker directo, o un modo local sin Docker basado en SQLite.
+Esta página explica cómo levantar OSeMOSYS Colombia por primera vez, ya sea para evaluar la aplicación o para empezar a desarrollar sobre ella. Hay dos caminos posibles: `task` (recomendado) o el stack completo con Docker directo.
 
-!!! tip "¿Solo vas a usar la plataforma?"
-    Si tu instituto ya tiene una instancia desplegada, no necesitas nada de esta página. Ver [Requisitos y solvers](requisitos.md) para lo que sí necesitas como analista.
+!!! tip "Uso de una instancia ya desplegada"
+    Si el instituto ya tiene una instancia desplegada, no hace falta nada de esta página. Ver [Requisitos y solvers](requisitos.md) para lo necesario como analista.
 
 ## Requisitos previos
 
-Hacen falta [Docker](https://docs.docker.com/get-docker/) y Docker Compose (para el camino recomendado y para Docker directo), [`task`](https://taskfile.dev/) (para el camino recomendado, ver cómo instalarlo abajo), Windows con PowerShell (para el modo local sin Docker) y Node.js 18+ con npm (solo si vas a trabajar en el frontend con recarga en caliente).
+Hacen falta [Docker](https://docs.docker.com/get-docker/) y Docker Compose (para el camino recomendado y para Docker directo), [`task`](https://taskfile.dev/) (para el camino recomendado, ver cómo instalarlo abajo) y Node.js 18+ con npm (solo para el desarrollo del frontend con recarga en caliente).
 
 ## Opción 1. Con `task` (recomendado)
 
@@ -33,7 +33,7 @@ Hacen falta [Docker](https://docs.docker.com/get-docker/) y Docker Compose (para
     winget install Task.Task
     ```
 
-Verifica la instalación.
+Verificar la instalación.
 
 ```bash
 task --version
@@ -52,19 +52,19 @@ Esto ejecuta build, migraciones y seed en un solo paso (equivalente a los tres c
 !!! tip "Usuario de prueba"
     Tras `task up` queda disponible el usuario **`seed`** con contraseña **`seed123`**, listo para iniciar sesión en la interfaz web.
 
-Verifica que todo quedó arriba y apaga el stack cuando termines.
+Verificar que todo quedó arriba, y apagar el stack al terminar.
 
 ```bash
 curl http://localhost:8010/api/v1/health
 task down            # baja contenedores, conserva volúmenes
 ```
 
-Luego abre la interfaz web en tu navegador. El **frontend** está en [http://localhost:8080](http://localhost:8080) y la **API** en [http://localhost:8010](http://localhost:8010).
+Luego, abrir la interfaz web en el navegador. El **frontend** está en [http://localhost:8080](http://localhost:8080) y la **API** en [http://localhost:8010](http://localhost:8010).
 
 
 ## Opción 2. Stack completo con Docker Compose directo
 
-Si prefieres no instalar `task`, o necesitas ejecutar cada paso por separado (por ejemplo para depurar uno en particular), usa Docker Compose directamente.
+Como alternativa a `task`, o para ejecutar cada paso por separado (por ejemplo para depurar uno en particular), usar Docker Compose directamente.
 
 ```bash
 docker compose up -d --build
@@ -80,7 +80,7 @@ El primer comando construye y levanta en segundo plano los servicios definidos e
 curl http://localhost:8010/api/v1/health
 ```
 
-Si la respuesta es exitosa, la API está lista. Abre el frontend en [http://localhost:8080](http://localhost:8080).
+Si la respuesta es exitosa, la API está lista. Abrir el frontend en [http://localhost:8080](http://localhost:8080).
 
 ### Apagar el stack
 
@@ -88,8 +88,8 @@ Si la respuesta es exitosa, la API está lista. Abre el frontend en [http://loca
 docker compose down
 ```
 
-Esto detiene los contenedores. Los datos de PostgreSQL y Redis quedan conservados en volúmenes Docker (se preservan entre reinicios) salvo que elimines explícitamente los volúmenes.
+Esto detiene los contenedores. Los datos de PostgreSQL y Redis quedan conservados en volúmenes Docker (se preservan entre reinicios) salvo que se eliminen explícitamente los volúmenes.
 
 ## Siguientes pasos
 
-Sigue el tutorial [Primera simulación](first-simulation.md) para iniciar sesión, crear un escenario y ver resultados. Y para tareas de desarrollo, como tests y linters, revisa [Contribuir](../contributing.md).
+Ver el tutorial [Primera simulación](../examples/first-simulation.md) para iniciar sesión, crear un escenario y ver resultados. Y para tareas de desarrollo, como tests y linters, ver [Contribuir](../contributing.md).

@@ -1,6 +1,6 @@
 # Primera simulación
 
-Esta guía te lleva paso a paso desde iniciar sesión hasta ver y descargar los primeros resultados de una simulación. Se asume que ya tienes el stack levantado. Si no, sigue primero [Instalación](installation.md).
+Esta guía te lleva paso a paso desde iniciar sesión hasta ver y descargar los primeros resultados de una simulación. Se asume que ya tienes el stack levantado. Si no, sigue primero [Instalación](../getting-started/installation.md).
 
 !!! tip "Antes de empezar"
     Necesitas el usuario semilla creado por `scripts/seed.py`, usuario **`seed`** y contraseña **`seed123`**.
@@ -69,7 +69,21 @@ Desde el ícono de registros (🔍) puedes ver el paso a paso detallado de la ej
 
 ![Registros detallados de la ejecución](../assets/screenshots/first-simulation/04-job-status-2.png)
 
-<!-- ## 5. Abrir los resultados
+## 5. Comparar resultados (opcional)
+
+Si tienes más de un escenario simulado, puedes compararlos lado a lado sin salir de la aplicación. Por ejemplo, comparando tres escenarios de política energética (`PD_base_results`, `PA_base_results`, `CN_base_results`):
+
+1. Ve a la sección **Resultados** del menú lateral. En la tabla de ejecuciones, marca la casilla de cada resultado que quieras comparar, hasta 10 a la vez.
+
+    ![Seleccionar resultados de simulación para comparar](../assets/screenshots/matriz-electrica/seleccionar-resultados-comparar.png)
+
+    Con dos o más resultados marcados, la aplicación habilita la comparativa de escenarios y arma las gráficas según el modo de vista que elijas después (facetas, por año o líneas totales).
+2. Usa el modo **Facetas** para poner una gráfica completa por escenario, una junto a otra, o alguno de los otros modos de comparación disponibles.
+3. Elige la variable a graficar (por ejemplo, producción con `ProductionByTechnology` o capacidad con `TotalCapacityAnnual`) y agrúpala como necesites (por tecnología, combustible, sector, etc.).
+
+Ver este mismo ejercicio aplicado a un caso real de política energética colombiana en [Evolución de la matriz eléctrica](matriz-electrica-escenarios.md). Para el detalle completo de modos de comparación y tipos de vista, ver [Visualizaciones y reportes](../user-guide/visualizaciones.md#comparacion-entre-escenarios).
+
+<!-- ## 6. Abrir los resultados
 
 Cuando el job termina exitosamente, ábrelo desde la lista de simulaciones para entrar a la página de resultados. Ahí encontrarás la **planeación de largo plazo** resultante de la simulación, con un resumen de indicadores clave del escenario resuelto, el selector de gráficas (donde puedes elegir qué variable visualizar, como producción, capacidad o emisiones, y cómo agruparla) y distintos tipos de vista, entre ellos barras apiladas, líneas, área, Pareto o tabla.
 
@@ -80,7 +94,7 @@ Cuando el job termina exitosamente, ábrelo desde la lista de simulaciones para 
 
 <!-- Para explorar todas las posibilidades de personalización de gráficas (tipos de vista, comparación entre escenarios, series, plantillas guardadas y exportación), continúa con [Visualizaciones y reportes](../user-guide/visualizaciones.md). -->
 <!--  -->
-<!-- ## 6. Descargar los resultados (o consultarlos después)
+<!-- ## 7. Descargar los resultados (o consultarlos después)
 
 Los resultados de la planeación de largo plazo quedan disponibles de dos formas simultáneas. La **descarga en CSV** te deja exportar, desde la página de resultados, los valores de salida (`GET /simulations/{job_id}/output-values/export`) o una gráfica puntual en CSV, Excel, PNG o SVG. La **persistencia en PostgreSQL** guarda todos los resultados en la base de datos del stack (tabla `osemosys_output_param_value`, entre otras), así que puedes volver a consultarlos, compararlos con otros escenarios o generar reportes más adelante sin tener que repetir la simulación.
 

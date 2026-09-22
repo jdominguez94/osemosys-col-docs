@@ -4,13 +4,13 @@ Antes de usar OSeMOSYS Colombia conviene distinguir dos perfiles. Quien **usa un
 
 ## Para usar la plataforma (analistas)
 
-Si ya tienes acceso a una instancia desplegada de OSeMOSYS Colombia (por ejemplo, la de tu institución), solo necesitas:
+Con acceso a una instancia desplegada de OSeMOSYS Colombia (por ejemplo, la del instituto), solo hace falta:
 
 - Un **navegador web moderno** (Chrome, Edge o Firefox, en sus últimas versiones). No hace falta instalar nada localmente.
-- **Excel o LibreOffice Calc**, si vas a preparar o revisar catálogos y escenarios en formato Excel/SAND antes de subirlos. Ver [Carga de datos Excel/SAND](../user-guide/carga-excel-sand.md).
+- **Excel o LibreOffice Calc**, para preparar o revisar catálogos y escenarios en formato Excel/SAND antes de subirlos. Ver [Carga de datos Excel/SAND](../user-guide/carga-excel-sand.md).
 - Conexión estable a la red donde está desplegada la instancia (intranet institucional o internet, según el despliegue).
 
-No necesitas Docker, Python ni conocimientos de programación para este perfil de uso.
+No hacen falta Docker, Python ni conocimientos de programación para este perfil de uso.
 
 ## Para instalar o desplegar la plataforma
 
@@ -28,7 +28,7 @@ En hardware, la exigencia depende del tamaño y la granularidad de los escenario
 
 ## Solvers de optimización
 
-Cada simulación resuelve un problema de programación lineal. La plataforma soporta varios solvers, seleccionables al lanzar la simulación (ver [Primera simulación](first-simulation.md)):
+Cada simulación resuelve un problema de programación lineal. La plataforma soporta varios solvers, seleccionables al lanzar la simulación (ver [Primera simulación](../examples/first-simulation.md)):
 
 | Solver | Tipo | Licencia | Notas |
 |---|---|---|---|
@@ -42,4 +42,4 @@ Cada simulación resuelve un problema de programación lineal. La plataforma sop
 
 ## Siguientes pasos
 
-Si tu perfil es de analista y ya tienes acceso a una instancia, continúa directamente con [Primera simulación](first-simulation.md). Si vas a instalar la plataforma, sigue con [Instalación](installation.md).
+Si tu perfil es de analista y ya tienes acceso a una instancia, continúa directamente con [Primera simulación](../examples/first-simulation.md). Si vas a instalar la plataforma, sigue con [Instalación](installation.md).

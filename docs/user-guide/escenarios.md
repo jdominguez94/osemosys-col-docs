@@ -35,4 +35,4 @@ El catálogo es la fuente de tecnologías, combustibles y demás códigos del mo
 
 ## Siguientes pasos
 
-Revisa [Simulaciones](simulaciones.md) para lanzar y monitorear la ejecución de un escenario. Si es tu primera vez usando la aplicación, empieza por [Primera simulación](../getting-started/first-simulation.md).
+Revisa [Simulaciones](simulaciones.md) para lanzar y monitorear la ejecución de un escenario. Si es tu primera vez usando la aplicación, empieza por [Primera simulación](../examples/first-simulation.md).

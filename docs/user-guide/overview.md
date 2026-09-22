@@ -4,32 +4,21 @@ OSeMOSYS Colombia es una aplicación web para planificadores y analistas energé
 
 ## ¿Qué resuelve la aplicación?
 
-Internamente, cada simulación plantea un problema de optimización lineal (minimización de costos del sistema energético sujeto a restricciones de demanda, capacidad, disponibilidad de recursos, emisiones, etc.) que se resuelve con un solver de programación lineal (HiGHS por defecto; Gurobi, CPLEX o Mosek según la configuración del escenario). Como usuario, no necesitas interactuar con esa capa matemática. La aplicación se encarga de traducir tus datos de entrada y tus decisiones de configuración en un modelo resoluble, y de traducir la solución de vuelta a gráficas y tablas comprensibles.
-
-## Dos modos de trabajo
-
-| Modo | Cómo funciona | Cuándo usarlo |
-|------|----------------|----------------|
-| **Escenarios en base de datos (modo DB)** | Los datos de entrada (demanda, tecnologías, combustibles, restricciones) viven en la base de datos PostgreSQL de la aplicación, organizados como escenarios reutilizables. | Es el modo principal, para construir, versionar y comparar múltiples escenarios de forma controlada dentro de la plataforma. |
-| **Carga de Excel/SAND** | Se sube un archivo Excel con el formato SAND y la simulación corre directamente sobre esos datos, sin pasar por la base de datos. | Para pruebas rápidas, validaciones puntuales, o para reproducir/comparar una corrida hecha originalmente en una hoja de cálculo externa (por ejemplo, un archivo SAND). |
-
-Ambos modos alimentan el mismo motor de simulación y producen resultados visualizables de la misma manera. Ver [Escenarios y catálogos](escenarios.md) y [Carga de datos Excel/SAND](carga-excel-sand.md) respectivamente.
-
-![Dos modos de trabajo: modo DB (principal) y modo Excel/SAND (standalone), ambos alimentando el mismo motor de simulación](../assets/diagrams/overview-dos-modos.svg)
+Internamente, cada simulación plantea un problema de optimización lineal (minimización de costos del sistema energético sujeto a restricciones de demanda, capacidad, disponibilidad de recursos, emisiones, etc.) que se resuelve con un solver de programación lineal (HiGHS por defecto; Gurobi, CPLEX o Mosek según la configuración del escenario). Como usuario, no hace falta interactuar con esa capa matemática. La aplicación se encarga de traducir los datos de entrada y las decisiones de configuración en un modelo resoluble, y de traducir la solución de vuelta a gráficas y tablas comprensibles.
 
 ## Flujo general de trabajo
 
 ![Flujo general: crear o elegir escenario, simular, visualizar, comparar (opcional), reportar (opcional)](../assets/diagrams/overview-flujo-trabajo.svg)
 
-**Crear escenario.** Define los supuestos del sistema energético que quieres estudiar. Ver [Escenarios y catálogos](escenarios.md).
+**Crear escenario.** Definir los supuestos del sistema energético a estudiar. Ver [Escenarios y catálogos](escenarios.md).
 
-**Simular.** Lanza la optimización y monitorea su avance. Ver [Simulaciones](simulaciones.md).
+**Simular.** Lanzar la optimización y monitorear su avance. Ver [Simulaciones](simulaciones.md).
 
-**Visualizar.** Explora los resultados con distintos tipos de gráfica, unidades y agrupaciones. Ver [Visualizaciones y reportes](visualizaciones.md).
+**Visualizar.** Explorar los resultados con distintos tipos de gráfica, unidades y agrupaciones. Ver [Visualizaciones y reportes](visualizaciones.md).
 
-**Comparar.** Contrasta resultados de varios escenarios simultáneamente (hasta 10) en distintos modos de comparación. Ver [Visualizaciones y reportes](visualizaciones.md#comparacion-entre-escenarios).
+**Comparar.** Contrastar resultados de varios escenarios simultáneamente (hasta 10) en distintos modos de comparación. Ver [Visualizaciones y reportes](visualizaciones.md#comparacion-entre-escenarios).
 
-**Reportar.** Guarda configuraciones de gráfica como plantillas reutilizables y ensámblalas en reportes exportables. Ver [Visualizaciones y reportes](visualizaciones.md#reportes).
+**Reportar.** Guardar configuraciones de gráfica como plantillas reutilizables y ensamblarlas en reportes exportables. Ver [Visualizaciones y reportes](visualizaciones.md#reportes).
 
 ## Funcionalidades adicionales para analistas avanzados
 
@@ -39,4 +28,4 @@ El **explorador de datos de resultados** es una vista de tabla de formato ancho 
 
 ## Primeros pasos
 
-Si aún no has ejecutado tu primera simulación, sigue el tutorial [Primera simulación](../getting-started/first-simulation.md).
+Para quien todavía no ha ejecutado una simulación, ver el tutorial [Primera simulación](../examples/first-simulation.md).

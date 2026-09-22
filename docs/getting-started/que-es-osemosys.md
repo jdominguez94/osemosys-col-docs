@@ -64,7 +64,7 @@ Estos son los parámetros que se editan al crear o ajustar un escenario en la ap
 
 ## Cómo citar OSeMOSYS
 
-Si usas resultados de OSeMOSYS Colombia en un informe, artículo o presentación, la referencia académica del framework metodológico subyacente es:
+Al usar resultados de OSeMOSYS Colombia en un informe, artículo o presentación, la referencia académica del framework metodológico subyacente es:
 
 > Howells, M., Rogner, H., Strachan, N., Heaps, C., Huntington, H., Kypreos, S., Hughes, A., Silveira, S., DeCarolis, J., Bazillian, M., & Roehrl, A. (2011). OSeMOSYS: The Open Source Energy Modeling System: An introduction to its ethos, structure and development. *Energy Policy*, 39(10), 5850–5870. https://doi.org/10.1016/j.enpol.2011.06.033
 
@@ -83,4 +83,4 @@ Si usas resultados de OSeMOSYS Colombia en un informe, artículo o presentación
 
 ## Siguientes pasos
 
-Sigue con [Requisitos y solvers](requisitos.md) para confirmar qué necesitas para usar la plataforma, y luego con [Primera simulación](first-simulation.md) para ver el flujo completo en la interfaz.
+Ver [Requisitos y solvers](requisitos.md) para lo necesario para usar la plataforma, y luego [Primera simulación](../examples/first-simulation.md) para ver el flujo completo en la interfaz.
