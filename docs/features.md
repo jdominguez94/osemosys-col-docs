@@ -22,7 +22,7 @@ Las 7 regiones en las que se desagrega el Sistema Interconectado Nacional en mod
 
 ## Optimización
 
-En el fondo, cada simulación es un único problema de optimización: minimizar el costo descontado total sujeto a las restricciones que se listan abajo. Cada una tiene un ejemplo matemático simple (dos tecnologías, con la formulación real de OSeMOSYS, aritmética verificable a mano) en los tres quickstarts.
+En el fondo, cada simulación es un único problema de optimización: minimizar el costo descontado total sujeto a las restricciones que se listan abajo. Cada una tiene un ejemplo matemático simple (dos tecnologías, con la formulación real de OSeMOSYS, aritmética verificable a mano) en los quickstarts.
 
 ![El problema de optimización: minimizar el costo descontado total sujeto a balance oferta-demanda, límites de capacidad, límite de emisiones y balance de almacenamiento, resuelto con el solver configurado](assets/diagrams/features-optimizacion.svg)
 
@@ -33,7 +33,7 @@ En el fondo, cada simulación es un único problema de optimización: minimizar 
 - **Flexibilidad de solver**: HiGHS por defecto (sin costo de licencia) o Gurobi/CPLEX/Mosek, como decisión de configuración, no una reescritura del modelo. Ver [Requisitos y solvers](getting-started/requisitos.md).
 
 !!! question "Por confirmar con el equipo de desarrollo"
-    El motor implementa además un bloque de **margen de reserva**. No confirmamos si un analista puede configurarlo hoy desde la interfaz o si por ahora es solo capacidad interna del motor de optimización.
+    El motor implementa además un bloque de **margen de reserva** (ejemplo: [Quickstart 4 — Margen de reserva](getting-started/quickstart-4-margen-reserva.md)). No confirmamos si un analista puede configurarlo hoy desde la interfaz o si por ahora es solo capacidad interna del motor de optimización.
 
 ## Análisis y usabilidad
 

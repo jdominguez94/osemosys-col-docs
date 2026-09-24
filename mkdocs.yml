@@ -84,6 +84,7 @@ nav:
           - Quickstart 1 — Despacho económico: getting-started/quickstart-1-oferta-demanda.md
           - Quickstart 2 — Expansión de capacidad: getting-started/quickstart-2-expansion-capacidad.md
           - Quickstart 3 — Restricciones de política: getting-started/quickstart-3-restricciones-politica.md
+          - Quickstart 4 — Margen de reserva: getting-started/quickstart-4-margen-reserva.md
       - Referencia:
           - Visión general: user-guide/overview.md
           - Escenarios y catálogos: user-guide/escenarios.md

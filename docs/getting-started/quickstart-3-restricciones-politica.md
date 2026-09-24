@@ -1,6 +1,6 @@
 # Quickstart 3 — Restricciones de política
 
-Último de los tres recorridos matemáticos. Retomamos el despacho de 2025 del [Quickstart 1](quickstart-1-oferta-demanda.md) (`PWRCOAL` = 80, `PWRGAS` = 20, costo 1400) y le agregamos una meta de emisiones, para ver explícitamente qué es una restricción de política y cuánto cuesta cumplirla.
+Tercero de los recorridos matemáticos. Retomamos el despacho de 2025 del [Quickstart 1](quickstart-1-oferta-demanda.md) (`PWRCOAL` = 80, `PWRGAS` = 20, costo 1400) y le agregamos una meta de emisiones, para ver explícitamente qué es una restricción de política y cuánto cuesta cumplirla.
 
 ## Emisiones del despacho sin restricción
 
@@ -45,4 +45,8 @@ Esa diferencia frente al despacho sin restricción es, literalmente, "el costo d
 
 ## Relación con la aplicación real
 
-Estos tres quickstarts usan dos tecnologías, un timeslice y cuatro años para que cada cuenta sea verificable a mano. La aplicación real resuelve el mismo tipo de problema — despacho, expansión de capacidad, descuento y restricciones de política — con cientos de tecnologías, más de 30 años de horizonte y varias restricciones a la vez. La lógica de fondo es la misma; ya no se puede verificar a mano, pero ahora sabes qué está pasando por debajo. Para verlo funcionando en la interfaz con datos reales, sigue con [Primera simulación](../examples/first-simulation.md).
+Estos quickstarts usan dos tecnologías, un timeslice y cuatro años para que cada cuenta sea verificable a mano. La aplicación real resuelve el mismo tipo de problema — despacho, expansión de capacidad, descuento y restricciones de política — con cientos de tecnologías, más de 30 años de horizonte y varias restricciones a la vez. La lógica de fondo es la misma; ya no se puede verificar a mano, pero ahora sabes qué está pasando por debajo. Para verlo funcionando en la interfaz con datos reales, continúe con [Primera simulación](../examples/first-simulation.md).
+
+## Siguiente paso
+
+Como recorrido adicional, [Quickstart 4 — Margen de reserva](quickstart-4-margen-reserva.md) muestra cómo el modelo exige capacidad de respaldo y cómo leer el dual de esa restricción como el costo del entrante.
