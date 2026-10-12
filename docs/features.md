@@ -32,8 +32,10 @@ En el fondo, cada simulación es un único problema de optimización: minimizar 
 - **Modelado de almacenamiento**: baterías y embalses, con dimensión propia en el explorador de resultados. Ver [Explorador de datos de resultados](user-guide/visualizaciones.md#explorador-de-datos-de-resultados).
 - **Flexibilidad de solver**: HiGHS por defecto (sin costo de licencia) o Gurobi/CPLEX/Mosek, como decisión de configuración, no una reescritura del modelo. Ver [Requisitos y solvers](getting-started/requisitos.md).
 
+<!-- Margen de reserva: no aprobado, se deja comentado.
 !!! question "Por confirmar con el equipo de desarrollo"
     El motor implementa además un bloque de **margen de reserva** (ejemplo: [Quickstart 4 — Margen de reserva](getting-started/quickstart-4-margen-reserva.md)). No confirmamos si un analista puede configurarlo hoy desde la interfaz o si por ahora es solo capacidad interna del motor de optimización.
+-->
 
 ## Análisis y usabilidad
 

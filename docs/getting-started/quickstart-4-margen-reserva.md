@@ -172,11 +172,11 @@ Esta descomposición es exactamente la condición de estacionariedad $\partial n
 
 Sin margen de reserva, ese costo marginal sería solo el componente de energía. Con margen de reserva, una parte importante del valor de cada unidad de demanda está en la **capacidad firme** que obliga a mantener, no en la energía que se produce. En un mercado eléctrico, esta es la lógica que justifica remunerar la capacidad firme por separado de la energía. En Colombia, el Cargo por Confiabilidad cumple ese papel.
 
-!!! note "En el modelo completo"
+<!-- !!! note "En el modelo completo"
     En la aplicación real hay un dual de RM3 por región y por año, y está expresado en **valor presente**, porque la función objetivo minimiza el costo descontado (ver el [Quickstart 1](quickstart-1-oferta-demanda.md)). Para llevarlo a dinero del año $y$, se divide por el factor de descuento de ese año. Además, la inversión no está anualizada: una planta construida en un año cuenta para el margen de todos los años de su vida útil, así que su costo se reparte entre los duales de esos años. La lectura sigue siendo la misma: el dual es el costo de la última unidad de capacidad firme exigida.
 
 !!! question "Por confirmar con el equipo de desarrollo"
-    El motor implementa el bloque de margen de reserva (ver [Funcionalidades](../features.md#optimizacion)). No está confirmado si hoy se puede configurar desde la interfaz, ni si los duales de las restricciones se exponen en el explorador de resultados.
+    El motor implementa el bloque de margen de reserva (ver [Funcionalidades](../features.md#optimizacion)). No está confirmado si hoy se puede configurar desde la interfaz, ni si los duales de las restricciones se exponen en el explorador de resultados. -->
 
 ## Siguiente paso
 
