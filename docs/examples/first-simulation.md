@@ -81,7 +81,7 @@ Si tienes más de un escenario simulado, puedes compararlos lado a lado sin sali
 2. Usa el modo **Facetas** para poner una gráfica completa por escenario, una junto a otra, o alguno de los otros modos de comparación disponibles.
 3. Elige la variable a graficar (por ejemplo, producción con `ProductionByTechnology` o capacidad con `TotalCapacityAnnual`) y agrúpala como necesites (por tecnología, combustible, sector, etc.).
 
-Ver este mismo ejercicio aplicado a un caso real de política energética colombiana en [Evolución de la matriz eléctrica](matriz-electrica-escenarios.md). Para el detalle completo de modos de comparación y tipos de vista, ver [Visualizaciones y reportes](../user-guide/visualizaciones.md#comparacion-entre-escenarios).
+Ver este mismo ejercicio aplicado a un caso real de política energética colombiana en [Evolución de la matriz eléctrica](matriz-electrica-escenarios.md).
 
 <!-- ## 6. Abrir los resultados
 

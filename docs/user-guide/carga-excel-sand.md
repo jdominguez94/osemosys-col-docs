@@ -25,7 +25,7 @@ No hay **persistencia del escenario como reutilizable**. Los datos de entrada no
 
 ## Visualización de resultados
 
-Una vez que la simulación desde Excel/SAND termina, los resultados se visualizan exactamente igual que los de un escenario en base de datos, con el mismo selector de gráficas, los mismos tipos de vista y las mismas opciones de exportación. Ver [Visualizaciones y reportes](visualizaciones.md).
+Una vez que la simulación desde Excel/SAND termina, los resultados se visualizan exactamente igual que los de un escenario en base de datos, con el mismo selector de gráficas, los mismos tipos de vista y las mismas opciones de exportación.
 
 ## Comparar contra una corrida externa
 
@@ -33,4 +33,4 @@ Si tu objetivo es verificar que un archivo Excel produce el mismo resultado en l
 
 ## Siguientes pasos
 
-Revisa [Archivos SAND](../examples/sand-files.md) para ver dónde están los archivos SAND de referencia, las políticas que representan y un ejemplo de su estructura. Consulta [Visualizaciones y reportes](visualizaciones.md) para explorar los resultados. Y si luego decides importar estos datos como un escenario persistente, ve a [Escenarios y catálogos](escenarios.md).
+Revisa [Archivos SAND](../examples/sand-files.md) para ver dónde están los archivos SAND de referencia, las políticas que representan y un ejemplo de su estructura. Y si luego decides importar estos datos como un escenario persistente, ve a [Escenarios y catálogos](escenarios.md).

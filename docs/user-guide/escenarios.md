@@ -27,11 +27,11 @@ En la sección de escenarios de la aplicación puedes crear uno nuevo. Generalme
 
 ## Editar y versionar escenarios
 
-Los escenarios existentes pueden ajustarse para explorar variantes. Cambia un parámetro puntual (por ejemplo, la disponibilidad de una tecnología o una meta de emisiones) y vuelve a simular, sin perder el escenario original. Esto es lo que permite luego comparar múltiples variantes lado a lado. Ver [Comparación entre escenarios](visualizaciones.md#comparacion-entre-escenarios).
+Los escenarios existentes pueden ajustarse para explorar variantes. Cambia un parámetro puntual (por ejemplo, la disponibilidad de una tecnología o una meta de emisiones) y vuelve a simular, sin perder el escenario original. Esto es lo que permite luego comparar múltiples variantes lado a lado.
 
 ## Catálogos
 
-El catálogo es la fuente de tecnologías, combustibles y demás códigos del modelo (por ejemplo, los códigos de tecnología como `PWRCOA`, `PWRHYD`, etc.) que subyace a los escenarios. Los nombres y colores visibles de cada tecnología/combustible en las gráficas provienen de este catálogo. Ver [Visualizaciones y reportes](visualizaciones.md#personalizar-nombres-y-colores-de-series) para cómo personalizarlos desde la interfaz.
+El catálogo es la fuente de tecnologías, combustibles y demás códigos del modelo (por ejemplo, los códigos de tecnología como `PWRCOA`, `PWRHYD`, etc.) que subyace a los escenarios. Los nombres y colores visibles de cada tecnología/combustible en las gráficas provienen de este catálogo.
 
 ## Siguientes pasos
 

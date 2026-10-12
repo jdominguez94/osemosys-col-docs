@@ -37,4 +37,4 @@ Este análisis puede tardar un poco más que la simulación original, ya que rec
 
 ## Siguientes pasos
 
-Revisa [Visualizaciones y reportes](visualizaciones.md) para explorar los resultados de una simulación exitosa, o [Escenarios y catálogos](escenarios.md) para ajustar los datos de entrada si tu simulación resultó infactible.
+Revisa [Escenarios y catálogos](escenarios.md) para ajustar los datos de entrada si tu simulación resultó infactible.

@@ -17,8 +17,8 @@ Las 7 regiones en las que se desagrega el Sistema Interconectado Nacional en mod
 - **Dos modos de entrada**: escenarios gestionados en base de datos, o simulación directa desde un archivo Excel/SAND sin pasar por la base de datos. Ver [Carga de datos Excel/SAND](user-guide/carga-excel-sand.md).
 - **Nacional o regional**: simulaciones a nivel nacional agregado o desagregadas en las 7 regiones del Sistema Interconectado Nacional. Ver [Escenarios y catálogos](user-guide/escenarios.md).
 - **Diagnóstico de infactibilidad**: identificación automática de restricciones en conflicto, con análisis detallado bajo demanda. Ver [Resultados infactibles](user-guide/simulaciones.md#resultados-infactibles).
-- **Visualización de resultados**: 5 tipos de vista, 4 modos de comparación multiescenario, series sintéticas, plantillas y reportes exportables. Ver [Visualizaciones y reportes](user-guide/visualizaciones.md).
-- **Explorador de datos**: tabla de resultados filtrable por 8 dimensiones, con exportación a Excel. Ver [Explorador de datos de resultados](user-guide/visualizaciones.md#explorador-de-datos-de-resultados).
+- **Visualización de resultados**: 5 tipos de vista, 4 modos de comparación multiescenario, series sintéticas, plantillas y reportes exportables.
+- **Explorador de datos**: tabla de resultados filtrable por 8 dimensiones, con exportación a Excel. Ver [Visión general](user-guide/overview.md).
 
 ## Optimización
 
@@ -29,7 +29,7 @@ En el fondo, cada simulación es un único problema de optimización: minimizar 
 - **Despacho económico (ED)**: para cada timeslice, el modelo decide qué tecnologías producen para cubrir la demanda al menor costo total. Ejemplo: [Quickstart 1 — Despacho económico](getting-started/quickstart-1-oferta-demanda.md).
 - **Planeación de expansión de capacidad (CEP)** y **planeación de trayectoria multianual (Pathway Planning)**: el modelo decide en qué tecnología invertir, cuándo, y cómo se contabiliza esa inversión (incluido el valor de salvamento) dentro de un horizonte de varios años. Ejemplo: [Quickstart 2 — Expansión de capacidad](getting-started/quickstart-2-expansion-capacidad.md). En la interfaz, con datos reales: [Evolución de la matriz eléctrica](examples/matriz-electrica-escenarios.md).
 - **Restricciones de política (Policy Constraints)**: metas de emisiones (`AnnualEmissionLimit`) y límites de capacidad, editables directamente desde un escenario. Ejemplo: [Quickstart 3 — Restricciones de política](getting-started/quickstart-3-restricciones-politica.md).
-- **Modelado de almacenamiento**: baterías y embalses, con dimensión propia en el explorador de resultados. Ver [Explorador de datos de resultados](user-guide/visualizaciones.md#explorador-de-datos-de-resultados).
+- **Modelado de almacenamiento**: baterías y embalses, con dimensión propia en el explorador de resultados. Ver [Visión general](user-guide/overview.md).
 - **Flexibilidad de solver**: HiGHS por defecto (sin costo de licencia) o Gurobi/CPLEX/Mosek, como decisión de configuración, no una reescritura del modelo. Ver [Requisitos y solvers](getting-started/requisitos.md).
 
 <!-- Margen de reserva: no aprobado, se deja comentado.

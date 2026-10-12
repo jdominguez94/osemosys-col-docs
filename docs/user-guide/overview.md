@@ -14,11 +14,11 @@ Internamente, cada simulación plantea un problema de optimización lineal (mini
 
 **Simular.** Lanzar la optimización y monitorear su avance. Ver [Simulaciones](simulaciones.md).
 
-**Visualizar.** Explorar los resultados con distintos tipos de gráfica, unidades y agrupaciones. Ver [Visualizaciones y reportes](visualizaciones.md).
+**Visualizar.** Explorar los resultados con distintos tipos de gráfica, unidades y agrupaciones.
 
-**Comparar.** Contrastar resultados de varios escenarios simultáneamente (hasta 10) en distintos modos de comparación. Ver [Visualizaciones y reportes](visualizaciones.md#comparacion-entre-escenarios).
+**Comparar.** Contrastar resultados de varios escenarios simultáneamente (hasta 10) en distintos modos de comparación.
 
-**Reportar.** Guardar configuraciones de gráfica como plantillas reutilizables y ensamblarlas en reportes exportables. Ver [Visualizaciones y reportes](visualizaciones.md#reportes).
+**Reportar.** Guardar configuraciones de gráfica como plantillas reutilizables y ensamblarlas en reportes exportables.
 
 ## Funcionalidades adicionales para analistas avanzados
 
