@@ -49,4 +49,10 @@ Estos quickstarts usan dos tecnologías, un timeslice y cuatro años para que ca
 
 ## Siguiente paso
 
+Continúe con [Quickstart 4 — Timeslices y energía solar](quickstart-4-time-slices.md), donde se agrega una planta solar y el despacho se resuelve con varios timeslices (temporadas y franjas horarias).
+
+<!-- Margen de reserva: no aprobado, se deja comentado.
+## Siguiente paso
+
 Como recorrido adicional, [Quickstart 4 — Margen de reserva](quickstart-4-margen-reserva.md) muestra cómo el modelo exige capacidad de respaldo y cómo leer el dual de esa restricción como el costo del entrante.
+-->
