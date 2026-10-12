@@ -1,12 +1,14 @@
 # Evolución de la matriz eléctrica
 
-Este ejemplo compara los resultados de tres escenarios de largo plazo (2022 a 2055) para entender cómo cambia la matriz eléctrica colombiana según la política energética que se asuma.
+Este ejemplo compara los resultados de tres escenarios de largo plazo (2022 a 2055) para entender cómo cambia la matriz eléctrica colombiana según la política energética que se asuma.     
+Estos son los resultados oficiales de oferta, calculada de forma endógena por el modelo para el sector Electricidad — uno de los sectores del Plan Energético Nacional (PEN). Para el detalle completo de la conceptualización de estos escenarios, ver el [Tomo II del PEN 2025-2055](https://docs.upme.gov.co/DemandayEficiencia/Documents/PEN_2025_2055/PEN_Tomo_II-Conceptualizacion_de_escenarios_PEN_2025-2055_VF.pdf).
 
-!!! info "Resultados oficiales del PEN"
-    Estos son los resultados oficiales de oferta, calculada de forma endógena por el modelo para el sector Electricidad — uno de los sectores del Plan Energético Nacional (PEN). Para el detalle completo de la conceptualización de estos escenarios, ver el [Tomo II del PEN 2025-2055](https://docs.upme.gov.co/DemandayEficiencia/Documents/PEN_2025_2055/PEN_Tomo_II-Conceptualizacion_de_escenarios_PEN_2025-2055_VF.pdf).
-
+ 
+<!-- !!! info "Resultados oficiales del PEN"
+    Estos son los resultados oficiales de oferta, calculada de forma endógena por el modelo para el sector Electricidad — uno de los sectores del Plan Energético Nacional (PEN). Para el detalle completo de la conceptualización de estos escenarios, ver el [Tomo II del PEN 2025-2055](https://docs.upme.gov.co/DemandayEficiencia/Documents/PEN_2025_2055/PEN_Tomo_II-Conceptualizacion_de_escenarios_PEN_2025-2055_VF.pdf). -->
+<!-- 
 !!! note "¿Buscas la lógica matemática detrás de esto?"
-    Este ejemplo usa datos reales. Para ver, con un caso simplificado de dos tecnologías, cómo el modelo decide en qué invertir y cuánto cuesta una meta de política, ve a [Quickstart 2 — Expansión de capacidad](../getting-started/quickstart-2-expansion-capacidad.md) y [Quickstart 3 — Restricciones de política](../getting-started/quickstart-3-restricciones-politica.md).
+    Este ejemplo usa datos reales. Para ver, con un caso simplificado de dos tecnologías, cómo el modelo decide en qué invertir y cuánto cuesta una meta de política, ve a [Quickstart 2 — Expansión de capacidad](../getting-started/quickstart-2-expansion-capacidad.md) y [Quickstart 3 — Restricciones de política](../getting-started/quickstart-3-restricciones-politica.md). -->
 
 ## Resultados de planeacion : Oferta de electricidad
 
