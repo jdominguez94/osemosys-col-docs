@@ -1,6 +1,6 @@
 # OSeMOSYS Colombia
 
-**OSeMOSYS Colombia** es la plataforma web de planeación energética de largo plazo de la UPME, construida sobre [OSeMOSYS](https://osemosys.readthedocs.io/), un framework de optimización de código abierto usado por instituciones de planeación energética en todo el mundo.
+**OSeMOSYS Colombia** es la plataforma web de planeación energética de largo plazo de la UPME, construida bajo los principios de modelado de la comunidad [OSeMOSYS](https://osemosys.readthedocs.io/). La anterior soporta un entorno de optimización de código abierto usado por instituciones de planeación energética y tomadores de decisión a nivel mundial.
 
 <div class="grid cards" markdown>
 

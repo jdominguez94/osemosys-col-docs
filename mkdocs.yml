@@ -1,4 +1,4 @@
-site_name: OSeMOSYS Colombia
+site_name: OptiPEN
 site_description: Guía de usuario y documentación técnica del modelo energético colombiano en OSeMOSYS
 repo_url: https://github.com/UPME-SubDemanda/Osemosys_UPME
 repo_name: UPME-SubDemanda/Osemosys_UPME
@@ -81,8 +81,8 @@ nav:
       - index.md
       - Funcionalidades: features.md
       - Getting Started:
-          - ¿Qué es esta plataforma?: getting-started/plataforma.md
-          - ¿Qué es OSeMOSYS?: getting-started/que-es-osemosys.md
+          - SIMPEN: getting-started/plataforma.md
+          - Introducción a OSeMOSYS: getting-started/que-es-osemosys.md
           - Requisitos y solvers: getting-started/requisitos.md
           - Instalación: getting-started/installation.md
           - Quickstart 1 — Despacho económico: getting-started/quickstart-1-oferta-demanda.md
